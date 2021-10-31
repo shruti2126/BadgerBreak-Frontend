@@ -1,71 +1,75 @@
 import React, {useState} from 'react'
 import { StyleSheet, Text, View, TextInput, Button } from 'react-native';
-import getStyles from '../Hooks/GlobalStyles'
 import loginUser from '../Hooks/loginUser'
-import registerUser from '../Hooks/RegisterUser'
+import registerUser from '../Hooks/registerUser'
 
 type mode = '' | 'login' | 'register'
 
 export default function Login() {
-	const styles = getStyles();
-
 	const [mode, setMode] = useState<mode>('');
 
-	const [userName, setUserName] = useState('');
+	const [email, setEmail] = useState('');
 	const [password, setPassword] = useState('');
 
 	const [status, setStatus] = useState('');
 
 	return (
-		<View style={styles.Background}>
-			<Text style={{color: 'white', fontSize: '48px'}}>Badger Break</Text>
-
+		<View style={{backgroundColor: '#1f2f3f', flex: 1, alignItems: 'center', justifyContent: 'center'}}>
+			<Text style={{color: 'white', fontSize: 32}}>Badger Break</Text>
 			{mode === '' &&
-			<View style={{marginTop: '100px'}}>
+			<>
 				<Button
-					onPress={() => {setMode('login')}}
-					title="Login"
+					onPress={() => setMode('login')}
+					title="log in"
 				/>
 				<Button
-					onPress={() => {setMode('register')}}
+					onPress={() => setMode('register')}
 					title="Register"
 				/>
-			</View>
+			</>
 			}
-
 			{mode !== '' &&
-			<View style={{marginTop: '100px'}}>
+			<>
+				<Button
+					onPress={() => {setMode(''); setStatus('')}}
+					title="Back"
+				/>
 				<TextInput
-					onChangeText={setUserName}
-					value={userName}
-					placeholder="User Name"
-					style={styles.TextArea}
+					onChangeText={setEmail}
+					value={email}
+					secureTextEntry={false}
+					placeholder="Email"
+					style={{backgroundColor: 'white', height: 40, width: 150, padding: 10, marginTop: 10, marginBottom: 10}}
 				/>
 				<TextInput
 					onChangeText={setPassword}
 					value={password}
 					secureTextEntry={true}
 					placeholder="Password"
-					style={styles.TextArea}
+					style={{backgroundColor: 'white', height: 40, width: 150, padding: 10, marginBottom: 10}}
 				/>
-				{status !== '' &&
-				<View style={styles.ErrorMessage}><Text style={{color: 'red', fontSize: '18px'}}>{status}</Text></View>
-				}
 				<Button
 					onPress={async () => {
-						try {
-							if (mode ==='login') await loginUser(userName, password);
-							else 				 await registerUser(userName, password);
-
-							// navigation.navigate("Home", {userName: userName});
+						try { 
+							let result
+							if (mode === 'login')
+								result = await loginUser(email, password)
+							else
+								result = await registerUser(email, password)
+							
+							setStatus(result)
+							// navigation.navigate('Home', {token: result.token})
 						}
-						catch(error) { 
-							setStatus(error.toString());
-						}
+						catch (e: any) { setStatus(e.toString()) }
 					}}
 					title={mode}
 				/>
-			</View>
+			</>
+			}
+			{status !== '' && 
+				<View style={{backgroundColor: 'white', borderColor: 'red', borderWidth: 5}}>
+					<Text style={{color: 'red', fontSize: 18}}>{status}</Text>
+				</View>
 			}
 		</View>
 	)
