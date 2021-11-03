@@ -1,11 +1,11 @@
-import React, {useState} from 'react'
+import React, {useState, useEffect} from 'react'
 import { StyleSheet, Text, View, TextInput, Button } from 'react-native';
 import loginUser from '../Hooks/loginUser'
 import registerUser from '../Hooks/registerUser'
 
 type mode = '' | 'login' | 'register'
 
-export default function Login() {
+export default function Login({ navigation }) {
 	const [mode, setMode] = useState<mode>('');
 
 	const [email, setEmail] = useState('');
@@ -56,9 +56,8 @@ export default function Login() {
 								result = await loginUser(email, password)
 							else
 								result = await registerUser(email, password)
-							
-							setStatus(result)
-							// navigation.navigate('Home', {token: result.token})
+						
+							navigation.navigate('Home', {token: result.token})
 						}
 						catch (e: any) { setStatus(e.toString()) }
 					}}

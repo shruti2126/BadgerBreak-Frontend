@@ -1,13 +1,23 @@
-import { StatusBar } from 'expo-status-bar';
 import React, {useState} from 'react';
 import { Button, StyleSheet, Text, View } from 'react-native';
-import Login from './Screens/Login'
-import loginUser from './Hooks/loginUser'
+import Login from './Screens/Login';
+import Home from './Screens/Home';
+
+import { NavigationContainer } from '@react-navigation/native';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import { createDrawerNavigator } from '@react-navigation/drawer';
+
+const Stack = createNativeStackNavigator();
+const Drawer = createDrawerNavigator();
 
 export default function App() {
-  const [status, setStatus] = useState('');
   return (
-    <Login />
+    <NavigationContainer>
+      <Stack.Navigator screenOptions={{headerShown: false}}>
+        <Stack.Screen name="Log In" component={Login}/>
+        <Stack.Screen name="Home" component={Home}/>
+      </Stack.Navigator>
+    </NavigationContainer>
   );
 }
 
