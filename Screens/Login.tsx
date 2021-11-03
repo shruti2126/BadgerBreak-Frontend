@@ -1,5 +1,5 @@
 import React, {useState, useEffect} from 'react'
-import { StyleSheet, Text, View, TextInput, Button } from 'react-native';
+import { StyleSheet, Text, View, TextInput, Button} from 'react-native';
 import loginUser from '../Hooks/loginUser'
 import registerUser from '../Hooks/registerUser'
 
@@ -57,7 +57,7 @@ export default function Login({ navigation }) {
 							else
 								result = await registerUser(email, password)
 						
-							navigation.navigate('Home', {token: result.token})
+							navigation.navigate('Home');
 						}
 						catch (e: any) { setStatus(e.toString()) }
 					}}

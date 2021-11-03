@@ -2,6 +2,7 @@ import React, {useState} from 'react';
 import { Button, StyleSheet, Text, View } from 'react-native';
 import Login from './Screens/Login';
 import Home from './Screens/Home';
+import CopingCards from './Screens/CopingCards';
 
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
@@ -22,19 +23,14 @@ export default function App() {
 }
 
 const MainNavigator: React.FC = () => {
-  <Drawer.Navigator
-		screenOptions={{
-		}}
-	>
-	  <Drawer.Screen name="Home" component={Home} options={{title: '', drawerLabel: 'Home	'}} />
-	</Drawer.Navigator>
+  return (
+    <Drawer.Navigator
+      screenOptions={{
+      }}
+    >
+      <Drawer.Screen name="Home" component={Home} options={{title: '', drawerLabel: 'Home'}} />
+      <Drawer.Screen name="Coping Cards" component={CopingCards} options={{title: '', drawerLabel: 'CopingCards'}} />
+    </Drawer.Navigator>
+  )
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
