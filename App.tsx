@@ -15,10 +15,19 @@ export default function App() {
     <NavigationContainer>
       <Stack.Navigator screenOptions={{headerShown: false}}>
         <Stack.Screen name="Log In" component={Login}/>
-        <Stack.Screen name="Home" component={Home}/>
+        <Stack.Screen name="Home" component={MainNavigator}/>
       </Stack.Navigator>
     </NavigationContainer>
   );
+}
+
+const MainNavigator: React.FC = () => {
+  <Drawer.Navigator
+		screenOptions={{
+		}}
+	>
+	  <Drawer.Screen name="Home" component={Home} options={{title: '', drawerLabel: 'Home	'}} />
+	</Drawer.Navigator>
 }
 
 const styles = StyleSheet.create({
