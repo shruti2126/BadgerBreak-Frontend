@@ -16,7 +16,9 @@ export default function ViewAssessments({navigation}) {
 	const [quizes, setQuizes] = useState<Quiz[]>([]);
 
 	useEffect(async () => {
-		setQuizes(await getQuizes());
+		const quizArray = await getQuizes()
+		console.log(quizArray)
+		setQuizes(quizArray);
 	}, []);
 
 	return (
@@ -24,7 +26,7 @@ export default function ViewAssessments({navigation}) {
 			<Text style={{color: 'white', fontSize: 32}}>Take an Assessment</Text>
 			<ScrollView>
 				{quizes.map((quiz) => {
-					<QuizCard quiz={quiz} />
+					return <QuizCard quiz={quiz} navigation={navigation} />
 				})}
 			</ScrollView>
 		</View>

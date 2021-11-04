@@ -1,6 +1,5 @@
 import React, {useState} from 'react'
 import {ScrollView, Text, View, Button} from 'react-native';
-//import Slider from '@react-native-community/slider';
 
 type Quiz = {
 	title: string,
@@ -10,8 +9,8 @@ type Quiz = {
 	maxPerQuestion: number,
 }
 
-export default function TakeAssessment({navigation}) {
-	const quiz = navigation.getParam('quiz');
+export default function TakeAssessment({route, navigation}) {
+	const quiz = route.params.quiz;
 
 	const zeros: number[] = []
 	quiz.questions.forEach((question: string) => {zeros.push(0)})
@@ -30,13 +29,19 @@ export default function TakeAssessment({navigation}) {
 	}
 
 	return (
-		<ScrollView>
+		<ScrollView style={{backgroundColor: '#1f2f3f'}}>
+			<Button 
+				onPress={() => {
+					navigation.goBack();
+				}}
+				title='back'
+			/>
 			{quiz.questions.map((question: string, i: number) => {
-				<View style={{width: '100%', margin: 10, backgroundColor: 'white'}}>
+				return <View style={{width: '80%', margin: 10, backgroundColor: 'white', padding: 20}}>
 					<Text style={{fontSize: 18}}>{question}</Text>
 					<Text style={{fontSize: 12}}>Answer: {scores[i]}</Text>
 					{scoreOptions.map((option) => {
-						<Button 
+						return <Button 
 							onPress={() => {
 								updateScore(i, option);
 							}}
@@ -47,7 +52,7 @@ export default function TakeAssessment({navigation}) {
 			})}
 			<Button 
 				onPress={() => {
-					navigation.navigate('ViewAssessmentResults', {scores: scores, quiz: quiz});
+					navigation.navigate('ViewAssessmentResuts', {scores: scores, quiz: quiz});
 				}}
 				title='Complete Assessment'
 			/>

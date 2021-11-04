@@ -1,15 +1,17 @@
 import React from 'react'
-import {ScrollView, Text} from 'react-native'
+import {Button, ScrollView, Text} from 'react-native'
 
-export default function ViewAssessmentResults({navigation}) {
-	const quiz = navigation.getParam('quiz')
-	const scores = navigation.getParam('scores')
+export default function ViewAssessmentResults({route, navigation}) {
+	const {quiz, scores} = route.params
 
-	const total = scores.sum()
+	let total = 0;
+
+	scores.forEach((score: number) => {total += score});
 
 	return (
 		<ScrollView>
-			<Text>Your Score was {total}!</Text>
+			<Text>Your Score for {quiz.title} was {total}!</Text>
+			<Button onPress={() => {navigation.navigate('ViewAssessments')}} title='Take Another Assessment' />
 		</ScrollView>
 	)
 }

@@ -4,6 +4,7 @@ import loginUser from '../Hooks/loginUser'
 import registerUser from '../Hooks/registerUser'
 import setStorageData from '../Hooks/setStorageData'
 import getStorageData from '../Hooks/getStorageData'
+import getQuizes from '../Hooks/getQuizes'
 
 type mode = '' | 'login' | 'register'
 
