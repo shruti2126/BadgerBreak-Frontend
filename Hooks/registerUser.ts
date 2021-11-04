@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const url = 'http://localhost:3001/login';
+const url = 'http://192.168.1.43:3001/login';
 
 const registerUser = async (email: string, password: string) => {
 	return axios.post(url, {email: email, password: password})

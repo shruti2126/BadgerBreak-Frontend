@@ -10,7 +10,7 @@ export default function Home() {
 	}, [])
 
 	return (
-		<View style={{backgroundColor: '#1f2f3f', flex: 1, justifyContent: 'center', alignItems: 'center'}}>
+		<View style={{backgroundColor: '#1f2f3f', flex: 1, justifyContent: 'flex-start', alignItems: 'center'}}>
 			<Text style={{color: 'white', fontSize: 32}}>Home Screen</Text>
 			<Text style={{color: 'white', fontSize: 32}}>{message}</Text>
 		</View>

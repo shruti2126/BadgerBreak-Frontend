@@ -3,6 +3,7 @@ import { StyleSheet, Text, View, TextInput, Button} from 'react-native';
 import loginUser from '../Hooks/loginUser'
 import registerUser from '../Hooks/registerUser'
 import setStorageData from '../Hooks/setStorageData'
+import getStorageData from '../Hooks/getStorageData'
 
 type mode = '' | 'login' | 'register'
 

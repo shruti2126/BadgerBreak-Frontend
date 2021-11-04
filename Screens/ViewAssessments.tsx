@@ -1,0 +1,32 @@
+import React, {useState, useEffect} from 'react'
+import {View, Text, ScrollView, TouchableOpacity} from 'react-native'
+import QuizCard from '../Components/QuizCard'
+import getQuizes from '../Hooks/getQuizes'
+
+type Quiz = {
+	title: string,
+	description: string,
+	questions: string[],
+	minPerQuestion: number,
+	maxPerQuestion: number,
+}
+
+export default function ViewAssessments({navigation}) {
+
+	const [quizes, setQuizes] = useState<Quiz[]>([]);
+
+	useEffect(async () => {
+		setQuizes(await getQuizes());
+	}, []);
+
+	return (
+		<View style={{flex: 1, alignItems: 'center', justifyContent: 'flex-start', backgroundColor: '#1f2f3f'}}>
+			<Text style={{color: 'white', fontSize: 32}}>Take an Assessment</Text>
+			<ScrollView>
+				{quizes.map((quiz) => {
+					<QuizCard quiz={quiz} />
+				})}
+			</ScrollView>
+		</View>
+	)
+}
