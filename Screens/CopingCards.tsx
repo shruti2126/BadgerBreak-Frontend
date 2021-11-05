@@ -23,13 +23,13 @@ export default function CopingCards() {
 	}, []);
 
 	return (
-		<View style={{flex: 1, backgroundColor: '#1f2f3f', justifyContent: 'center', alignItems: 'center'}}>
+		<View style={{}}>
 			<Text style={{color: 'white'}}>Coping Cards</Text>
 
 			<ScrollView>
 				{/* map transforms an array of one element to another */}
-				{ccards.map((ccard) => {
-					return <CopingCard ccard={ccard} />
+				{ccards.map((ccard, i) => {
+					return <CopingCard ccard={ccard} key={i} />
 				})}
 			</ScrollView>
 		</View>
