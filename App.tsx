@@ -41,7 +41,7 @@ const MainNavigator: React.FC = () => {
 
 const QuizNavigator: React.FC = () => {
   return (
-    <QuizStack.Navigator>
+    <QuizStack.Navigator screenOptions={{headerShown: false}}>
       <QuizStack.Screen name="ViewAssessments" component={ViewAssessments} />
       <QuizStack.Screen name="TakeAssessment" component={TakeAssessment} />
       <QuizStack.Screen name="ViewAssessmentResuts" component={ViewAssessmentResults} />

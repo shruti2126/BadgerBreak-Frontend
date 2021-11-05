@@ -17,7 +17,6 @@ export default function ViewAssessments({navigation}) {
 
 	useEffect(async () => {
 		const quizArray = await getQuizes()
-		console.log(quizArray)
 		setQuizes(quizArray);
 	}, []);
 

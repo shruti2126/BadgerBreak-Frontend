@@ -40,14 +40,16 @@ export default function TakeAssessment({route, navigation}) {
 				return <View style={{width: '80%', margin: 10, backgroundColor: 'white', padding: 20}}>
 					<Text style={{fontSize: 18}}>{question}</Text>
 					<Text style={{fontSize: 12}}>Answer: {scores[i]}</Text>
-					{scoreOptions.map((option) => {
-						return <Button 
-							onPress={() => {
-								updateScore(i, option);
-							}}
-							title={option}
-						/>
-					})}
+					<View style={{display: 'flex', flexDirection: 'row'}}>
+						{scoreOptions.map((option) => {
+							return <Button 
+								onPress={() => {
+									updateScore(i, option);
+								}}
+								title={option.toString()}
+							/>
+						})}
+					</View>
 				</View>
 			})}
 			<Button 
