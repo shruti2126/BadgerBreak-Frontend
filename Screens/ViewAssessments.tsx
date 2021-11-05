@@ -9,6 +9,7 @@ type Quiz = {
 	questions: string[],
 	minPerQuestion: number,
 	maxPerQuestion: number,
+	answerLegend: string[],
 }
 
 export default function ViewAssessments({navigation}) {

@@ -1,0 +1,10 @@
+{
+	"configurations": [
+		{
+			"type": "pwa-chrome",
+			"name": "React-Native Debugger",
+			"request": "launch",
+			"url": "http://localhost:19002"
+		}
+	]
+}

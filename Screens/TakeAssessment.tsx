@@ -7,6 +7,7 @@ type Quiz = {
 	questions: string[],
 	minPerQuestion: number,
 	maxPerQuestion: number,
+	answerLegend: string[],
 }
 
 export default function TakeAssessment({route, navigation}) {
@@ -16,7 +17,7 @@ export default function TakeAssessment({route, navigation}) {
 	quiz.questions.forEach((question: string) => {zeros.push(0)})
 
 	const scoreOptions: number[] = []
-	for (let i = quiz.minPerQuestion; i < quiz.maxPerQuestion; i++) {
+	for (let i = quiz.minPerQuestion; i <= quiz.maxPerQuestion; i++) {
 		scoreOptions.push(i)
 	}
 
@@ -29,13 +30,20 @@ export default function TakeAssessment({route, navigation}) {
 	}
 
 	return (
-		<ScrollView style={{backgroundColor: '#1f2f3f'}}>
+		<View style={{backgroundColor: '#1f2f3f', display: 'flex', alignItems: 'center', justifyContent: 'flex-start'}}>
+		<View style={{width: '100%', backgroundColor: 'white', padding: 20, margin: 5}}>
+			<Text>Please answer each question according to how it best matches the following key: </Text>
+			{quiz.answerLegend.map((answerKey: string, i: number) => {
+				return <Text>{i + quiz.minPerQuestion}: {answerKey}</Text>
+			})}
 			<Button 
 				onPress={() => {
 					navigation.goBack();
 				}}
 				title='back'
 			/>
+		</View>
+		<ScrollView>
 			{quiz.questions.map((question: string, i: number) => {
 				return <View style={{width: '80%', margin: 10, backgroundColor: 'white', padding: 20}}>
 					<Text style={{fontSize: 18}}>{question}</Text>
@@ -59,5 +67,6 @@ export default function TakeAssessment({route, navigation}) {
 				title='Complete Assessment'
 			/>
 		</ScrollView>
+		</View>
 	)
 }
