@@ -55,6 +55,7 @@ export default function Login({ navigation }) {
 					onPress={async () => {
 						try { 
 							let result
+							navigation.navigate('Home');
 							if (mode === 'login')
 								result = await loginUser(email, password)
 							else
