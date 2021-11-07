@@ -1,6 +1,6 @@
 const axios = require('axios');
 
-const url = 'http://192.168.1.43:3001/login';
+const url = 'http://192.168.1.76:3001/login';
 
 const loginUser = async (email: string, password: string) => {
 	return axios.get(url, {
