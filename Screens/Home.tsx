@@ -1,6 +1,7 @@
 import React, {useState, useEffect} from 'react'
 import {View, Text, TouchableOpacity, Button} from 'react-native'
 import getStorageData from '../Hooks/getStorageData'
+import AsyncStorage from '@react-native-async-storage/async-storage';
 import getQuizes from '../Hooks/getQuizes'
 
 type cCard = {
@@ -22,7 +23,7 @@ type quizScoreType = {
 	score: number
 }
 
-export default function Home() {
+export default function Home({navigation}) {
 	const [cCards, setcCards] = useState<cCard[]>([]);
 	const [quizes, setQuizes] = useState<quizScoreType[]>([]);
 	
@@ -33,8 +34,10 @@ export default function Home() {
 	}, [])
 
 	const loadData = async () => {
-		const cards = await getStorageData('cCards');
-		const allQuizes = await getStorageData('quizes');
+		const user = await getStorageData('user')
+
+		const cards = await getStorageData(user.email + ':cCards');
+		const allQuizes = await getStorageData(user.email + ':quizes');
 
 		setQuizes(allQuizes !== null? allQuizes : []);
 		setcCards(cards !== null? cards : [])
@@ -70,6 +73,26 @@ export default function Home() {
 						})}
 					</>
 				}
+			</TouchableOpacity>
+
+			<TouchableOpacity 
+				style={{padding: 20, margin: 15, backgroundColor: 'lightblue', display: 'flex', alignItems: 'center', justifyContent: 'center', borderRadius: 10}}	
+				onPress={async () => {
+					await AsyncStorage.removeItem('user');
+					navigation.goBack();
+				}}
+			>
+				<Text style={{fontSize: 12, color: 'black'}}>Sign Out</Text>
+			</TouchableOpacity>
+
+			<TouchableOpacity 
+				style={{padding: 20, margin: 15, backgroundColor: 'red', display: 'flex', alignItems: 'center', justifyContent: 'center', borderRadius: 10}}	
+				onPress={async () => {
+					await AsyncStorage.clear();
+					navigation.goBack();
+				}}
+			>
+				<Text style={{fontSize: 12, color: 'white'}}>Delete All Your Data</Text>
 			</TouchableOpacity>
 		</View>
 	)

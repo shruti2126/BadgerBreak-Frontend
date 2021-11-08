@@ -9,6 +9,17 @@ import getQuizes from '../Hooks/getQuizes'
 type mode = '' | 'login' | 'register'
 
 export default function Login({ navigation }) {
+
+	useEffect(() => {
+		loginIfUser();
+	}, [])
+
+	const loginIfUser = async () => {
+		if (await getStorageData('user') !== null) {
+			navigation.navigate('Home')
+		}
+	}
+
 	const [mode, setMode] = useState<mode>('');
 
 	const [email, setEmail] = useState('');

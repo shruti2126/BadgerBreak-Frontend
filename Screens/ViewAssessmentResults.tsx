@@ -15,7 +15,8 @@ export default function ViewAssessmentResults({route, navigation}) {
 	}, []);
 
 	const updateQuizes = async () => {
-		let quizes = await getStorageData('quizes');
+		const user = await getStorageData('user');
+		let quizes = await getStorageData(user.email + ':quizes');
 		quizes = quizes !== null? quizes : []
 		const total = scores.reduce((sum:number, score:number) => sum += score);
 		var newQuizScores = [...quizes];
@@ -26,7 +27,7 @@ export default function ViewAssessmentResults({route, navigation}) {
 		else {
 			newQuizScores[i].score = total;
 		}
-		await setStorageData('quizes', newQuizScores);
+		await setStorageData(user.email + ':quizes', newQuizScores);
 	}
 
 	return (

@@ -21,7 +21,8 @@ export default function CopingCards() {
 	const [text, setText] = useState<string>('');
 
 	useEffect(async () => {
-		const cardArray = await getStorageData("cCards");
+		const user = await getStorageData('user')
+		const cardArray = await getStorageData(user.email + ":cCards");
 		if (cardArray !== null) {
 		 	setcCards(cardArray)
 		}
@@ -37,22 +38,27 @@ export default function CopingCards() {
 		setFilter(newFilter)
 	}, [ccards])
 
+	const updateStorage = async (cCards: cCard[]) => {
+		const user = await getStorageData('user')
+		await setStorageData(user.email + ":cCards", cCards);
+	}
+
 	const addCard = async (newCard: cCard) => {
-		await setStorageData("cCards", [...ccards, newCard])
+		updateStorage([...ccards, newCard])
 		setcCards([...ccards, newCard])
 	}
 
 	const updateCard = async (index: number, newCard: cCard) => {
 		var newCards = [...ccards]
 		newCards.splice(index, 1, newCard)
-		await setStorageData("cCards", newCards)
+		updateStorage(newCards)
 		setcCards(newCards);
 	}
 
 	const delCard = async (index: number) => {
 		var newCards = [...ccards]
 		newCards.splice(index, 1)
-		await setStorageData("cCards", newCards)
+		updateStorage(newCards)
 		setcCards(newCards);
 	}
 
