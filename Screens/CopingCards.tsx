@@ -27,6 +27,16 @@ export default function CopingCards() {
 		}
 	}, []);
 
+	useEffect(() => {
+		let newFilter = []
+		ccards.forEach((card) => {
+			if (!newFilter.includes(card.emotion)) {
+				newFilter.push(card.emotion)
+			}
+		})
+		setFilter(newFilter)
+	}, [ccards])
+
 	const addCard = async (newCard: cCard) => {
 		await setStorageData("cCards", [...ccards, newCard])
 		setcCards([...ccards, newCard])
@@ -46,9 +56,14 @@ export default function CopingCards() {
 		setcCards(newCards);
 	}
 
-	type filter = '' | 'anger' | 'fatigue' | 'insomnia'
+	const [filter, setFilter] = useState<string[]>([]);
 
-	const [filter, setFilter] = useState<filter>('');
+	const filterCards = (card: cCard) => {
+		return filter.includes(card.emotion) || filter.length === 0
+	}
+
+	let allEmotions = ccards.map((card: cCard) => card.emotion);
+	allEmotions = allEmotions.filter((emotion: string, i: number) => allEmotions.indexOf(emotion) === i)
 
 	return (
 		<View style={styles.container}>
@@ -78,24 +93,26 @@ export default function CopingCards() {
 				<Text style = {styles.simpleText}>Select a Category</Text>
 
 				<View> {/* button container */}
-
-					<Button
-						onPress = {() => setFilter('anger')}
-						title = "anger"
-					/>
-					<Button
-						onPress = {() => setFilter('fatigue')}
-						title = "fatigue"
-					/>
-					<Button
-						onPress = {() => setFilter('insomnia')}
-						title = "insomnia"
-					/>
+					{allEmotions.map(emotion => {
+						return <Button
+							onPress={() => {
+								let newFilter = [...filter]
+								if (newFilter.includes(emotion)) {
+									newFilter.push(emotion)
+								}
+								else {
+									newFilter = newFilter.filter((emote) => emote !== emotion)
+								}
+								setFilter(newFilter)
+							}}
+							title={emotion}
+						/>
+					})}
 				</View>
 			</View>
 			<View>
 				{/* map transforms an array of one element to another */}
-				{ccards.map((ccard, i) => {
+				{ccards.filter((ccard) => filterCards(ccard)).map((ccard, i) => {
 					return <CopingCard 
 						ccard={ccard} 
 						key={i} 
