@@ -7,6 +7,10 @@ export default function getStyling() {
             flex: 1,
             justifyContent: 'flex-start',
             alignItems: 'center'
+        },
+        h1: {
+            color: 'white',
+            fontSize: 32
         }
     })
 }

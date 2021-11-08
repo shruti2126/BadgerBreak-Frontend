@@ -26,7 +26,7 @@ export default function CopingCards() {
 
 	return (
 		<View style={styles.container}>
-			<Text style={{color: 'white'}}>Coping Cards</Text>
+			<Text style={styles.h1}>Coping Cards</Text>
 
 			<ScrollView>
 				{/* map transforms an array of one element to another */}

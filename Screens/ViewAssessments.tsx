@@ -2,6 +2,7 @@ import React, {useState, useEffect} from 'react'
 import {View, Text, ScrollView, TouchableOpacity} from 'react-native'
 import QuizCard from '../Components/QuizCard'
 import getQuizes from '../Hooks/getQuizes'
+import getStyling from '../Styling/Styling'
 
 type Quiz = {
 	title: string,
@@ -11,6 +12,8 @@ type Quiz = {
 	maxPerQuestion: number,
 	answerLegend: string[],
 }
+
+const styles = getStyling();
 
 export default function ViewAssessments({navigation}) {
 
@@ -22,8 +25,8 @@ export default function ViewAssessments({navigation}) {
 	}, []);
 
 	return (
-		<View style={{flex: 1, alignItems: 'center', justifyContent: 'flex-start', backgroundColor: '#1f2f3f'}}>
-			<Text style={{color: 'white', fontSize: 32}}>Take an Assessment</Text>
+		<View style={styles.container}>
+			<Text style={styles.h1}>Take an Assessment</Text>
 			<ScrollView>
 				<View style={{display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'flex-start'}}>
 					{quizes.map((quiz) => {
