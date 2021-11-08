@@ -29,8 +29,8 @@ export default function ViewAssessments({navigation}) {
 			<Text style={styles.h1}>Take an Assessment</Text>
 			<ScrollView>
 				<View style={{display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'flex-start'}}>
-					{quizes.map((quiz) => {
-						return <QuizCard quiz={quiz} navigation={navigation} />
+					{quizes.map((quiz, i) => {
+						return <QuizCard quiz={quiz} navigation={navigation} key={i} />
 					})}
 				</View>
 			</ScrollView>

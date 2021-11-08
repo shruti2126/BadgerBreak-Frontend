@@ -1,8 +1,12 @@
 import React, {useState, useEffect} from 'react'
 import {View, Text, TouchableOpacity, Button} from 'react-native'
 import getStorageData from '../Hooks/getStorageData'
+<<<<<<< HEAD
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import getQuizes from '../Hooks/getQuizes'
+=======
+import AsyncStorage from '@react-native-async-storage/async-storage'
+>>>>>>> ryandev
 
 type cCard = {
 	emotion: string,
@@ -76,6 +80,7 @@ export default function Home({navigation}) {
 			</TouchableOpacity>
 
 			<TouchableOpacity 
+<<<<<<< HEAD
 				style={{padding: 20, margin: 15, backgroundColor: 'lightblue', display: 'flex', alignItems: 'center', justifyContent: 'center', borderRadius: 10}}	
 				onPress={async () => {
 					await AsyncStorage.removeItem('user');
@@ -87,12 +92,19 @@ export default function Home({navigation}) {
 
 			<TouchableOpacity 
 				style={{padding: 20, margin: 15, backgroundColor: 'red', display: 'flex', alignItems: 'center', justifyContent: 'center', borderRadius: 10}}	
+=======
+				style={{backgroundColor: 'red', padding: 20, borderRadius: 10, margin: 10, display: 'flex', justifyContent: 'center', alignItems: 'center'}}
+>>>>>>> ryandev
 				onPress={async () => {
 					await AsyncStorage.clear();
 					navigation.goBack();
 				}}
 			>
+<<<<<<< HEAD
 				<Text style={{fontSize: 12, color: 'white'}}>Delete All Your Data</Text>
+=======
+				<Text style={{fontSize: 12, color: 'white'}}>DELETE USER DATA</Text>
+>>>>>>> ryandev
 			</TouchableOpacity>
 		</View>
 	)

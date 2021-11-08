@@ -8,7 +8,7 @@ import getQuizes from '../Hooks/getQuizes'
 
 type mode = '' | 'login' | 'register'
 
-export default function Login({ navigation }) {
+const Login = ({ navigation }) => {
 
 	useEffect(() => {
 		loginIfUser();
@@ -92,3 +92,5 @@ export default function Login({ navigation }) {
 		</View>
 	)
 }
+
+export default Login
