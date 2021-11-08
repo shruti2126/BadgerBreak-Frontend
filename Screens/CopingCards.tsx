@@ -51,7 +51,7 @@ export default function CopingCards() {
 			<ScrollView>
 				{/* map transforms an array of one element to another */}
 				{ccards.map((ccard, i) => {
-					return <CopingCard ccard={ccard} key={i} />
+					return <CopingCard cCard={ccard} key={i} />
 				})}
 			</ScrollView>
 		</View>
