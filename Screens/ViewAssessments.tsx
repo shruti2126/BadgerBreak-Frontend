@@ -25,9 +25,11 @@ export default function ViewAssessments({navigation}) {
 		<View style={{flex: 1, alignItems: 'center', justifyContent: 'flex-start', backgroundColor: '#1f2f3f'}}>
 			<Text style={{color: 'white', fontSize: 32}}>Take an Assessment</Text>
 			<ScrollView>
-				{quizes.map((quiz) => {
-					return <QuizCard quiz={quiz} navigation={navigation} />
-				})}
+				<View style={{display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'flex-start'}}>
+					{quizes.map((quiz) => {
+						return <QuizCard quiz={quiz} navigation={navigation} />
+					})}
+				</View>
 			</ScrollView>
 		</View>
 	)
