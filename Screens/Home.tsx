@@ -1,7 +1,7 @@
 import React, {useState, useEffect} from 'react'
 import {View, Text, TouchableOpacity, Button} from 'react-native'
 import getStorageData from '../Hooks/getStorageData'
-import getQuizes from '../Hooks/getQuizes'
+import AsyncStorage from '@react-native-async-storage/async-storage'
 
 type cCard = {
 	emotion: string,
@@ -22,7 +22,7 @@ type quizScoreType = {
 	score: number
 }
 
-export default function Home() {
+export default function Home({navigation}) {
 	const [cCards, setcCards] = useState<cCard[]>([]);
 	const [quizes, setQuizes] = useState<quizScoreType[]>([]);
 	
@@ -70,6 +70,16 @@ export default function Home() {
 						})}
 					</>
 				}
+			</TouchableOpacity>
+
+			<TouchableOpacity 
+				style={{backgroundColor: 'red', padding: 20, borderRadius: 10, margin: 10, display: 'flex', justifyContent: 'center', alignItems: 'center'}}
+				onPress={async () => {
+					await AsyncStorage.clear();
+					navigation.goBack();
+				}}
+			>
+				<Text style={{fontSize: 12, color: 'white'}}>DELETE USER DATA</Text>
 			</TouchableOpacity>
 		</View>
 	)

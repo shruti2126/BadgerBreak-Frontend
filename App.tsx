@@ -30,6 +30,17 @@ const MainNavigator: React.FC = () => {
   return (
     <Drawer.Navigator
       screenOptions={{
+        drawerStyle: {
+          backgroundColor: '#1f2f3f',
+        },
+        headerStyle: {
+          backgroundColor: '#1f2f3f'
+        },
+        drawerItemStyle: {
+          backgroundColor: 'white'
+        },
+        drawerType: 'back',
+        headerTintColor: 'white',
       }}
     >
       <Drawer.Screen name="Home" component={Home} options={{title: '', drawerLabel: 'Home'}} />

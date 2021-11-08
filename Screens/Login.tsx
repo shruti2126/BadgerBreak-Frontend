@@ -8,13 +8,27 @@ import getQuizes from '../Hooks/getQuizes'
 
 type mode = '' | 'login' | 'register'
 
-export default function Login({ navigation }) {
+type props = {
+	navigation: any
+}
+
+const Login: React.FC<props> = ({ navigation }) => {
 	const [mode, setMode] = useState<mode>('');
 
 	const [email, setEmail] = useState('');
 	const [password, setPassword] = useState('');
 
 	const [status, setStatus] = useState('');
+
+	useEffect(() => {
+		loginIfUser();
+	}, [])
+
+	const loginIfUser = async () => {
+		if (await getStorageData('user')) {
+			navigation.navigate('Home')
+		}
+	}
 
 	return (
 		<View style={{backgroundColor: '#1f2f3f', flex: 1, alignItems: 'center', justifyContent: 'center'}}>
@@ -81,3 +95,5 @@ export default function Login({ navigation }) {
 		</View>
 	)
 }
+
+export default Login
