@@ -1,22 +1,38 @@
 import React, { useEffect } from 'react'
-import {Button, ScrollView, Text} from 'react-native'
-import setStorageData from '../Hooks/setStorageData'
+import {Button, View, Text} from 'react-native'
+import getStorageData from '../Hooks/getStorageData';
+import setStorageData from '../Hooks/setStorageData';
+
+type quizScoreType = {title: string, score: number}
 
 export default function ViewAssessmentResults({route, navigation}) {
 	const {quiz, scores} = route.params
 
-	let total = 0;
+	const total = scores.reduce((sum:number, score:number) => sum += score);
 
-	scores.forEach((score: number) => {total += score});
-
-	useEffect(async () => {
-		await setStorageData(quiz.title, total);
+	useEffect(() => {
+		updateQuizes();
 	}, []);
 
+	const updateQuizes = async () => {
+		let quizes = await getStorageData('quizes');
+		quizes = quizes !== null? quizes : []
+		const total = scores.reduce((sum:number, score:number) => sum += score);
+		var newQuizScores = [...quizes];
+		const i = newQuizScores.findIndex((score: quizScoreType) => score.title === quiz.title)
+		if (i === -1) {
+			newQuizScores.push({title: quiz.title, score: total})
+		}
+		else {
+			newQuizScores[i].score = total;
+		}
+		await setStorageData('quizes', newQuizScores);
+	}
+
 	return (
-		<ScrollView>
+		<View style={{flex: 1, backgroundColor: '#1f2f3f', justifyContent: 'flex-start', alignItems: 'center', padding: 15}}>
 			<Text>Your Score for {quiz.title} was {total}!</Text>
 			<Button onPress={() => {navigation.navigate('ViewAssessments')}} title='Take Another Assessment' />
-		</ScrollView>
+		</View>
 	)
 }
