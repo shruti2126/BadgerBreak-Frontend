@@ -1,7 +1,7 @@
 const axios = require('axios');
 const base64 = require('base-64');
 
-const url = 'http://localhost:3001/login';
+const url = 'http://192.168.1.43:3001/login';
 
 type response = {
 	token?: string,

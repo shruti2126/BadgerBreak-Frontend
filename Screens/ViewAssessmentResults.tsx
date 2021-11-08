@@ -32,7 +32,8 @@ export default function ViewAssessmentResults({route, navigation}) {
 
 	return (
 		<View style={{flex: 1, backgroundColor: '#1f2f3f', justifyContent: 'flex-start', alignItems: 'center', padding: 15}}>
-			<Text>Your Score for {quiz.title} was {total}!</Text>
+			<Text style={{margin: 20, fontSize: 18, color: 'white'}}>Your Score for {quiz.title} was {total}!</Text>
+			<Text style={{margin: 20, fontSize: 12, color: 'white'}}>Take another assessment or go back to the home screen to see all your assessment results{quiz.title} was {total}!</Text>
 			<Button onPress={() => {navigation.navigate('ViewAssessments')}} title='Take Another Assessment' />
 		</View>
 	)

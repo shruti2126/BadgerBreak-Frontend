@@ -96,9 +96,11 @@ export default function CopingCards() {
 					title='Add New Card'
 					color='green'
 				/>
-				<Text style = {{color: 'black'}}>Filter Categories</Text>
+				{filter.length !== 0 ?
+					<Text style={{color: 'black'}}>Filter Categories</Text> : <></>
+				}
 
-				<View style={{display: 'flex', justifyContent: 'center', flexWrap: 'wrap', flexDirection: 'row', alignItems: 'center'}}> {/* button container */}
+				<View style={{display: 'flex', justifyContent: 'center', flexWrap: 'wrap', flexDirection: 'row', alignItems: 'center'}}>
 					{allEmotions.map(emotion => {
 						return <Button
 							onPress={() => {
@@ -118,7 +120,6 @@ export default function CopingCards() {
 				</View>
 			</View>
 			<View>
-				{/* map transforms an array of one element to another */}
 				{ccards.filter((ccard) => filterCards(ccard)).map((ccard, i) => {
 					return <CopingCard 
 						ccard={ccard} 

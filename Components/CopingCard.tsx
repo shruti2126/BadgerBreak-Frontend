@@ -17,10 +17,6 @@ const CopingCard: React.FC<cardProps> = ({ccard, editCard, delCard}) => {
 	const [emotion, setEmotion] = useState<string>(ccard.emotion);
 	const [text, setText] = useState<string>(ccard.text);
 
-	if (!ccard) {
-		return <></>
-	}
-
 	return (
         <TouchableOpacity 
 			style={{backgroundColor: "white", margin: 20, padding: 20, borderRadius: 10, width: 250}}
@@ -28,7 +24,7 @@ const CopingCard: React.FC<cardProps> = ({ccard, editCard, delCard}) => {
 		>
             <Text style={{fontSize: 14, fontWeight: 'bold'}}>{ccard.emotion}</Text>
             <Text style={{fontSize: 14}}>{ccard.text}</Text>
-			{isEditing &&
+			{isEditing ?
 			<>
 				<TextInput
 					onChangeText={setEmotion}
@@ -56,7 +52,7 @@ const CopingCard: React.FC<cardProps> = ({ccard, editCard, delCard}) => {
 						color='red'
 					/>
 				</View>
-			</>
+			</>: <></>
 			}
         </TouchableOpacity>
 	)
