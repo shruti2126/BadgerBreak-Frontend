@@ -1,15 +1,22 @@
 const axios = require('axios');
+const base64 = require('base-64');
 
-const url = 'http://192.168.1.43:3001/login';
+const url = 'http://localhost:3001/login';
 
-const loginUser = async (email: string, password: string) => {
-	return axios.get(url, {
+type response = {
+	token?: string,
+	message?: string
+}
+
+const loginUser = async (email: string, password: string): Promise<response> => {
+	const encoded = base64.encode(email + ':' + password);
+
+	return await axios.get(url, {
 		headers: {
-			email: email,
-			password: password
+			token: encoded
 		}
 	})
-		.then( (response: any) => JSON.stringify(response.data))
+		.then( (response: any) => response.data)
 		.catch( (err: any) => {return err})
 }
 

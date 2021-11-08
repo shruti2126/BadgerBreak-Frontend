@@ -54,14 +54,17 @@ export default function Login({ navigation }) {
 				<Button
 					onPress={async () => {
 						try { 
-							let result
 							if (mode === 'login')
-								result = await loginUser(email, password)
+								var result = await loginUser(email, password)
 							else
-								result = await registerUser(email, password)
+								var result = await registerUser(email, password)
 
-							result = JSON.parse(result)
-							setStorageData('user', result)
+							if (result.message !== undefined) {
+								setStatus(result.message);
+								return;
+							}
+							
+							setStorageData('user', {email: email, token: result.token})
 							navigation.navigate('Home');
 						}
 						catch (e: any) { setStatus(e.toString()) }
