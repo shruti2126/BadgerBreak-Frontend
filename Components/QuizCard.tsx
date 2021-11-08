@@ -1,10 +1,26 @@
 import React from 'react';
 import {Button, Text, View, TouchableOpacity} from 'react-native';
 
-const QuizCard = ({navigation, quiz}) => {
+type QuizCardType = {
+	title: string,
+	description: string,
+	questions: string[],
+	minPerQuestion: number,
+	maxPerQuestion: number,
+	answerLegend: string[],
+}
+
+type propType = {
+	navigation: any,
+	quiz: QuizCardType
+}
+
+const QuizCard : React.FC<propType> = ({navigation, quiz}) => {
+
 	if (!quiz) {
 		return <></>
 	}
+
 	return (
 		<TouchableOpacity
 			onPress={() => {navigation.navigate('TakeAssessment', { quiz: quiz })}}
