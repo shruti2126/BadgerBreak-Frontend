@@ -16,8 +16,9 @@ const registerUser = async (email: string, password: string): Promise<response> 
 			token: encoded
 		}
 	})
-		.then( (response: any) => response.data)
-		.catch( (err: any) => {return err})
+		.then( (response: any) => response.data)		
+		.catch( (err: any) => {return {message: err.message}})
+
 }
 
 export default registerUser;

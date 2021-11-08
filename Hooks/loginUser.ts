@@ -17,7 +17,7 @@ const loginUser = async (email: string, password: string): Promise<response> => 
 		}
 	})
 		.then( (response: any) => response.data)
-		.catch( (err: any) => {return err})
+		.catch( (err: any) => {return {message: err.message}})
 }
 
 export default loginUser;
