@@ -3,12 +3,14 @@ import {View, Text} from 'react-native'
 import { ScrollView } from 'react-native-gesture-handler'
 import getStorageData from '../Hooks/getStorageData'
 import CopingCard from '../Components/CopingCard'
+import getStyling from '../Styling/Styling'
 
 type cCard = {
 	emotion: string,
 	text: string
 }
 
+const styles = getStyling();
 
 export default function CopingCards() {
 
@@ -23,7 +25,7 @@ export default function CopingCards() {
 	}, []);
 
 	return (
-		<View style={{}}>
+		<View style={styles.container}>
 			<Text style={{color: 'white'}}>Coping Cards</Text>
 
 			<ScrollView>
