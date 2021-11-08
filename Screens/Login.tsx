@@ -53,22 +53,21 @@ export default function Login({ navigation }) {
 				/>
 				<Button
 					onPress={async () => {
-						navigation.navigate('Home');
-						// try { 
-						// 	if (mode === 'login')
-						// 		var result = await loginUser(email, password)
-						// 	else
-						// 		var result = await registerUser(email, password)
+						try { 
+							if (mode === 'login')
+								var result = await loginUser(email, password)
+							else
+								var result = await registerUser(email, password)
 
-						// 	if (result.message !== undefined) {
-						// 		setStatus(result.message);
-						// 		return;
-						// 	}
+							if (result.message !== undefined) {
+								setStatus(result.message);
+								return;
+							}
 							
-						// 	setStorageData('user', {email: email, token: result.token})
-						// 	navigation.navigate('Home');
-						// }
-						// catch (e: any) { setStatus(e.toString()) }
+							setStorageData('user', {email: email, token: result.token})
+							navigation.navigate('Home');
+						}
+						catch (e: any) { setStatus(e.toString()) }
 					}}
 					title={mode}
 				/>

@@ -90,14 +90,14 @@ export default function CopingCards() {
 					title='Add New Card'
 					color='green'
 				/>
-				<Text style = {styles.simpleText}>Select a Category</Text>
+				<Text style = {{color: 'black'}}>Filter Categories</Text>
 
-				<View> {/* button container */}
+				<View style={{display: 'flex', justifyContent: 'center', flexWrap: 'wrap', flexDirection: 'row', alignItems: 'center'}}> {/* button container */}
 					{allEmotions.map(emotion => {
 						return <Button
 							onPress={() => {
 								let newFilter = [...filter]
-								if (newFilter.includes(emotion)) {
+								if (!newFilter.includes(emotion)) {
 									newFilter.push(emotion)
 								}
 								else {
@@ -106,6 +106,7 @@ export default function CopingCards() {
 								setFilter(newFilter)
 							}}
 							title={emotion}
+							color={filter.includes(emotion)? 'green' : 'red'}
 						/>
 					})}
 				</View>
