@@ -1,3 +1,5 @@
+// https://reactnative.dev/docs/layout-props
+
 import { StyleSheet } from "react-native"
 
 export default function getStyling() {
@@ -10,7 +12,14 @@ export default function getStyling() {
         },
         h1: {
             color: 'white',
-            fontSize: 32
-        }
+            fontSize: 32,
+            marginBottom: 12,
+            textAlign: 'center'
+        },
+        simpleText: {
+            color: 'white',
+            fontSize: 16,
+            marginBottom: 10
+        },
     })
 }
