@@ -73,6 +73,7 @@ export default function CopingCards() {
 
 	return (
 		<View style={styles.container}>
+			<ScrollView>
 			<Text style={styles.h1}>Coping Cards</Text>
 
 			<View style={{backgroundColor: '#DDDDDD', display: 'flex', alignItems: 'center', justifyContent: 'center', width: '90%', padding: 10, borderRadius: 10}}>
@@ -129,6 +130,7 @@ export default function CopingCards() {
 					/>
 				})}
 			</View>
+			</ScrollView>
 		</View>
 	)
 }
