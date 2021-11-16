@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import { Button, StyleSheet, Text, View } from 'react-native';
+import {StyleSheet, Text, View } from 'react-native';
 import Login from './Screens/Login';
 import Home from './Screens/Home';
 import CopingCards from './Screens/CopingCards';
@@ -10,19 +10,36 @@ import { createDrawerNavigator } from '@react-navigation/drawer';
 import ViewAssessments from './Screens/ViewAssessments';
 import TakeAssessment from './Screens/TakeAssessment';
 import ViewAssessmentResults from './Screens/ViewAssessmentResults';
+import { ThemeProvider, Button } from 'react-native-elements';
 
 const Stack = createNativeStackNavigator();
 const Drawer = createDrawerNavigator();
 const QuizStack = createNativeStackNavigator();
 
+import getStyling from './Styling/Styling';
+const styles = getStyling();
+
+// https://reactnativeelements.com/docs/customization/#theme
+const theme = {
+  Button: {
+    // https://reactnativeelements.com/docs/button/#buttonstyle
+    buttonStyle: styles.button,
+    // https://reactnativeelements.com/docs/button/#containerstyle
+    containerStyle: styles.buttonContainer
+
+  },
+};
+
 export default function App() {
   return (
-    <NavigationContainer>
-      <Stack.Navigator screenOptions={{headerShown: false}}>
-        <Stack.Screen name="Log In" component={Login}/>
-        <Stack.Screen name="Home" component={MainNavigator}/>
-      </Stack.Navigator>
-    </NavigationContainer>
+    <ThemeProvider theme = {theme}>
+      <NavigationContainer>
+        <Stack.Navigator screenOptions={{headerShown: false}}>
+          <Stack.Screen name="Log In" component={Login}/>
+          <Stack.Screen name="Home" component={MainNavigator}/>
+        </Stack.Navigator>
+      </NavigationContainer>
+    </ThemeProvider>
   );
 }
 
