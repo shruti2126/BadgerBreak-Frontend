@@ -1,14 +1,19 @@
 // https://reactnative.dev/docs/layout-props
-
 import { StyleSheet } from "react-native"
 
 export default function getStyling() {
     return StyleSheet.create({
+        button: {
+        },
+        buttonContainer: {
+        },
         container: {
+            alignItems: 'center',
+            alignContent: 'center',
             backgroundColor: '#1f2f3f',
             flex: 1,
-            justifyContent: 'flex-start',
-            alignItems: 'center'
+            flexDirection: "column",
+            justifyContent: 'center'
         },
         h1: {
             color: 'white',
