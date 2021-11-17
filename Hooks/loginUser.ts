@@ -1,7 +1,7 @@
 const axios = require('axios');
 const base64 = require('base-64');
 
-const url = 'http://192.168.1.43:3001/login';
+import url from './getUrl'
 
 type response = {
 	token?: string,
@@ -11,7 +11,7 @@ type response = {
 const loginUser = async (email: string, password: string): Promise<response> => {
 	const encoded = base64.encode(email + ':' + password);
 
-	return await axios.get(url, {
+	return await axios.get(url + '/login', {
 		headers: {
 			token: encoded
 		}

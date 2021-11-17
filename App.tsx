@@ -60,9 +60,9 @@ const MainNavigator: React.FC = () => {
         headerTintColor: 'white',
       }}
     >
-      <Drawer.Screen name="Home" component={Home} options={{title: '', drawerLabel: 'Home'}} />
-      <Drawer.Screen name="Coping Cards" component={CopingCards} options={{title: '', drawerLabel: 'Coping Cards'}} />
-      <Drawer.Screen name="Quiz" component={QuizNavigator} options={{title: '', drawerLabel: 'Take An Assessment'}} />
+      <Drawer.Screen name="Home" component={Home} options={{title: 'Home', drawerLabel: 'Home'}} />
+      <Drawer.Screen name="Coping Cards" component={CopingCards} options={{title: 'Coping Cards', drawerLabel: 'Coping Cards'}} />
+      <Drawer.Screen name="Quiz" component={QuizNavigator} options={{title: 'Assessment', drawerLabel: 'Take An Assessment'}} />
     </Drawer.Navigator>
   )
 }

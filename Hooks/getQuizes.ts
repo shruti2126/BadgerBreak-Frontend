@@ -1,11 +1,10 @@
 import axios from 'axios';
-
-const url = 'http://192.168.1.43:3001/quizes';
+import url from './getUrl';
 
 const getQuizes = async () => {
-	return await axios.get(url)
+	return await axios.get(url + '/quizes')
 		.then(response => response.data)
-		.catch(error => ['Could not fetch Quizes']);
+		.catch(error => ['Could not fetch Quizes', error.message]);
 }
 
 export default getQuizes;

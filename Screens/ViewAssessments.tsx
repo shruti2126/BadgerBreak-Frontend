@@ -28,11 +28,13 @@ export default function ViewAssessments({navigation}) {
 		<View style={styles.container}>
 			<Text style={styles.h1}>Take an Assessment</Text>
 			<ScrollView>
-				<View style={{display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'flex-start'}}>
-					{quizes.map((quiz, i) => {
-						return <QuizCard quiz={quiz} navigation={navigation} key={i} />
-					})}
-				</View>
+				{quizes[0] !== "Could not fetch Quizes" && 
+					<View style={{display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'flex-start'}}>
+						{quizes.map((quiz, i) => {
+							return <QuizCard quiz={quiz} navigation={navigation} key={i} />
+						})}
+					</View>
+				}
 			</ScrollView>
 		</View>
 	)

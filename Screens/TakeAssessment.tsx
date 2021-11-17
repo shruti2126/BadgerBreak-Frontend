@@ -14,7 +14,7 @@ export default function TakeAssessment({route, navigation}) {
 	const quiz = route.params.quiz;
 
 	const zeros: number[] = []
-	quiz.questions.forEach((question: string) => {zeros.push(0)})
+	quiz.questions.forEach((question: string) => {zeros.push(quiz.minPerQuestion)})
 
 	const scoreOptions: number[] = []
 	for (let i = quiz.minPerQuestion; i <= quiz.maxPerQuestion; i++) {
@@ -33,7 +33,7 @@ export default function TakeAssessment({route, navigation}) {
 		<View style={{backgroundColor: '#1f2f3f', display: 'flex', alignItems: 'center', justifyContent: 'flex-start'}}>
 		<ScrollView>
 			<View style={{display: 'flex', flexDirection: 'column', justifyContent: 'flex-start', alignItems: 'center'}}>
-			<View style={{width: '100%', backgroundColor: 'white', padding: 20, margin: 5}}>
+			<View style={{width: '100%', backgroundColor: 'white', padding: 20, borderRadius: 10}}>
 				<Text>Please answer each question according to how it best matches the following key: </Text>
 				{quiz.answerLegend.map((answerKey: string, i: number) => {
 					return <Text>{i + quiz.minPerQuestion}: {answerKey}</Text>
@@ -46,10 +46,10 @@ export default function TakeAssessment({route, navigation}) {
 				/>
 			</View>
 			{quiz.questions.map((question: string, i: number) => {
-				return <View style={{width: '80%', margin: 10, backgroundColor: 'white', padding: 20}}>
+				return <View style={{width: '80%', margin: 10, backgroundColor: 'white', padding: 20, borderRadius: 10}}>
 					<Text style={{fontSize: 18}}>{question}</Text>
 					<Text style={{fontSize: 12}}>Answer: {scores[i]}</Text>
-					<View style={{display: 'flex', flexDirection: 'row'}}>
+					<View style={{display: 'flex', flexDirection: 'row', justifyContent: 'space-evenly'}}>
 						{scoreOptions.map((option) => {
 							return <Button 
 								onPress={() => {
