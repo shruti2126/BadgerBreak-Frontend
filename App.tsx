@@ -11,10 +11,13 @@ import ViewAssessments from './Screens/ViewAssessments';
 import TakeAssessment from './Screens/TakeAssessment';
 import ViewAssessmentResults from './Screens/ViewAssessmentResults';
 import { ThemeProvider, Button } from 'react-native-elements';
+import CBPosts from './Screens/CbPosts'
+import CBReplies from './Screens/CBReplies'
 
 const Stack = createNativeStackNavigator();
 const Drawer = createDrawerNavigator();
 const QuizStack = createNativeStackNavigator();
+const CommunityStack = createNativeStackNavigator();
 
 import getStyling from './Styling/Styling';
 const styles = getStyling();
@@ -60,9 +63,10 @@ const MainNavigator: React.FC = () => {
         headerTintColor: 'white',
       }}
     >
-      <Drawer.Screen name="Home" component={Home} options={{title: 'Home', drawerLabel: 'Home'}} />
-      <Drawer.Screen name="Coping Cards" component={CopingCards} options={{title: 'Coping Cards', drawerLabel: 'Coping Cards'}} />
-      <Drawer.Screen name="Quiz" component={QuizNavigator} options={{title: 'Assessment', drawerLabel: 'Take An Assessment'}} />
+      <Drawer.Screen name="Home" component={Home} options={{title: '', drawerLabel: 'Home'}} />
+      <Drawer.Screen name="Coping Cards" component={CopingCards} options={{title: '', drawerLabel: 'Coping Cards'}} />
+      <Drawer.Screen name="Quiz" component={QuizNavigator} options={{title: '', drawerLabel: 'Take An Assessment'}} />
+      <Drawer.Screen name="Posts" component={CommunityNavigator} options={{title: '', drawerLabel: 'Community'}} />
     </Drawer.Navigator>
   )
 }
@@ -74,5 +78,14 @@ const QuizNavigator: React.FC = () => {
       <QuizStack.Screen name="TakeAssessment" component={TakeAssessment} />
       <QuizStack.Screen name="ViewAssessmentResuts" component={ViewAssessmentResults} />
     </QuizStack.Navigator>
+  )
+}
+
+const CommunityNavigator: React.FC = () => {
+  return (
+    <CommunityStack.Navigator screenOptions={{headerShown: false}}>
+      <CommunityStack.Screen name="Posts" component={CBPosts} />
+      <CommunityStack.Screen name="Replies" component={CBReplies} />
+    </CommunityStack.Navigator>
   )
 }
