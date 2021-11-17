@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from 'react'
 import { StyleSheet, Text, View } from 'react-native'
 import PostCard from '../Components/PostsCard'
-import getPosts from  '../Hooks/getPosts'
+import getPost from  '../Hooks/getPosts'
 
 type Post = {
     _id: Number,
@@ -31,8 +31,7 @@ const CBPosts = ({navigation, route}) => {
     const [posts, setPosts] = useState<Post[]>([])
 
     useEffect(async () => {
-        console.log("here")
-        setPosts(await getPosts())
+        setPosts(await getPost())
     }, [])
 
     return (

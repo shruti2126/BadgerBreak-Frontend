@@ -5,7 +5,7 @@ import axios from 'axios';
 const url = 'http://localhost:3001/replies';
 
 
-const getReplies = async () => {
+const getReplies = async (postId:Number) => {
 	return await axios.get(url)
 		.then(response => response.data)
 		.catch(error => ['Could not fetch replies']);

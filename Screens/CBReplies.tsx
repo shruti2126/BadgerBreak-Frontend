@@ -38,7 +38,7 @@ const CBReplies = ({navigation, route}) => {
             <FullPost post={post} />
             {
                 replies.map((reply, i) => {
-                    return <ReplyCard reply={reply} postId={post._id} key={i}/>
+                    return <ReplyCard reply={reply} key={i}/>
                 })
             }
         </View>

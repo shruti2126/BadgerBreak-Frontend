@@ -4,12 +4,12 @@ import axios from 'axios';
 
 const url = 'http://localhost:3001/posts';
 
-const getPosts = async () => {
+const getPost = async () => {
 	return await axios.get(url)
 		.then(response => response.data)
 		.catch(error => ['Could not fetch posts']);
 }
 
-export default getPosts
+export default getPost
 
 const styles = StyleSheet.create({})
