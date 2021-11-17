@@ -1,12 +1,14 @@
 import React, {useState, useEffect} from 'react'
-import { StyleSheet, Text, View, TextInput, Button} from 'react-native';
+import { StyleSheet, Text, View, TextInput} from 'react-native';
+import { Button } from 'react-native-elements';
 import loginUser from '../Hooks/loginUser'
 import registerUser from '../Hooks/registerUser'
 import setStorageData from '../Hooks/setStorageData'
 import getStorageData from '../Hooks/getStorageData'
 import getQuizes from '../Hooks/getQuizes'
+import getStyling from '../Styling/Styling'
 
-type mode = '' | 'login' | 'register'
+type mode = '' | 'Log In' | 'Register'
 
 const Login = ({ navigation }) => {
 
@@ -27,17 +29,19 @@ const Login = ({ navigation }) => {
 
 	const [status, setStatus] = useState('');
 
+	const styles = getStyling();
+
 	return (
-		<View style={{backgroundColor: '#1f2f3f', flex: 1, alignItems: 'center', justifyContent: 'center'}}>
+		<View style={styles.container}>
 			<Text style={{color: 'white', fontSize: 32}}>Badger Break</Text>
 			{mode === '' &&
 			<>
 				<Button
-					onPress={() => setMode('login')}
-					title="log in"
+					onPress={() => setMode('Log In')}
+					title="Log In"
 				/>
 				<Button
-					onPress={() => setMode('register')}
+					onPress={() => setMode('Register')}
 					title="Register"
 				/>
 			</>
@@ -65,7 +69,7 @@ const Login = ({ navigation }) => {
 				<Button
 					onPress={async () => {
 						try { 
-							if (mode === 'login')
+							if (mode === 'Log In')
 								var result = await loginUser(email, password)
 							else
 								var result = await registerUser(email, password)
