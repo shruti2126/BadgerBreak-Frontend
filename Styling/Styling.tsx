@@ -35,6 +35,15 @@ export default function getStyling() {
             alignItems: 'center', 
             justifyContent: 'center',
             borderRadius: 10,
+        },
+        textInput: {
+            backgroundColor: 'white', 
+            height: 40, 
+            width: 150, 
+            padding: 10, 
+            marginTop: 10, 
+            marginBottom: 10,
+            borderRadius: 10,
         }
     })
 }
