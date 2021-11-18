@@ -19,10 +19,14 @@ export default function ViewAssessments({navigation}) {
 
 	const [quizes, setQuizes] = useState<Quiz[]>([]);
 
-	useEffect(async () => {
+	useEffect(() => {
+		loadQuizes();
+	}, []);
+
+	const loadQuizes = async () => {
 		const quizArray = await getQuizes()
 		setQuizes(quizArray);
-	}, []);
+	}
 
 	return (
 		<View style={styles.container}>

@@ -20,13 +20,17 @@ export default function CopingCards() {
 	const [emotion, setEmotion] = useState<string>('');
 	const [text, setText] = useState<string>('');
 
-	useEffect(async () => {
+	useEffect(() => {
+		loadCards();
+	}, []);
+
+	const loadCards = async () => {
 		const user = await getStorageData('user')
 		const cardArray = await getStorageData(user.email + ":cCards");
 		if (cardArray !== null) {
 		 	setcCards(cardArray)
 		}
-	}, []);
+	}
 
 	useEffect(() => {
 		let newFilter = []

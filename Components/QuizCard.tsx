@@ -1,5 +1,6 @@
 import React from 'react';
 import {Button, Text, View, TouchableOpacity} from 'react-native';
+import getStyles from '../Styling/Styling';
 
 type QuizCardType = {
 	title: string,
@@ -15,6 +16,8 @@ type propType = {
 	quiz: QuizCardType
 }
 
+const styles = getStyles();
+
 const QuizCard : React.FC<propType> = ({navigation, quiz}) => {
 
 	if (!quiz) {
@@ -24,11 +27,10 @@ const QuizCard : React.FC<propType> = ({navigation, quiz}) => {
 	return (
 		<TouchableOpacity
 			onPress={() => {navigation.navigate('TakeAssessment', { quiz: quiz })}}
+			style={styles.card}
 		>
-			<View style={{backgroundColor: 'white', width: '100%', margin: 20, padding: 20}}>
-				<Text style={{fontSize: 14, fontWeight: 'bold'}}>{quiz.title}</Text>
-				<Text>{quiz.description}</Text>
-			</View>
+			<Text style={{fontSize: 14, fontWeight: 'bold'}}>{quiz.title}</Text>
+			<Text>{quiz.description}</Text>
 		</TouchableOpacity>
 	)
 }

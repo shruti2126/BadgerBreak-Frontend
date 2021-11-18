@@ -1,14 +1,17 @@
 import React, { useEffect } from 'react'
-import {Button, View, Text} from 'react-native'
+import {TouchableOpacity, View, Text} from 'react-native'
 import getStorageData from '../Hooks/getStorageData';
 import setStorageData from '../Hooks/setStorageData';
+import getStyles from '../Styling/Styling';
 
 type quizScoreType = {title: string, score: number}
+
+const styles = getStyles();
 
 export default function ViewAssessmentResults({route, navigation}) {
 	const {quiz, scores} = route.params
 
-	const total = scores.reduce((sum:number, score:number) => sum += score);
+	const total = scores.reduce((sum:number, score:number) => sum += Math.trunc(score));
 
 	useEffect(() => {
 		updateQuizes();
@@ -31,10 +34,16 @@ export default function ViewAssessmentResults({route, navigation}) {
 	}
 
 	return (
-		<View style={{flex: 1, backgroundColor: '#1f2f3f', justifyContent: 'flex-start', alignItems: 'center', padding: 15}}>
-			<Text style={{margin: 20, fontSize: 18, color: 'white'}}>Your Score for {quiz.title} was {total}!</Text>
-			<Text style={{margin: 20, fontSize: 12, color: 'white'}}>Take another assessment or go back to the home screen to see all your assessment results{quiz.title} was {total}!</Text>
-			<Button onPress={() => {navigation.navigate('ViewAssessments')}} title='Take Another Assessment' />
+		<View style={[styles.container, {justifyContent: 'flex-start'}]}>
+			<Text style={styles.card}>Your Score for {quiz.title} was {total}!</Text>
+			<Text style={styles.card}>Take another assessment or go back to the home screen to see all your assessment results{quiz.title} was {total}!</Text>
+			<Text style={styles.card}>We are currently in contact with Dr. Ritu to improve our quiz scoring as the algorithm to score them varies from assessment to assessment. More Assessments and meaningful scoring coming in Iteration 3</Text>
+			<TouchableOpacity 
+				style={[styles.card, {backgroundColor: 'steelblue'}]}
+				onPress={() => navigation.popToTop()}
+			>
+				<Text style={{fontSize: 16, color: 'white'}}>Take Another Assessment</Text>
+			</TouchableOpacity>
 		</View>
 	)
 }

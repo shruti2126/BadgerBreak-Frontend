@@ -11,7 +11,7 @@ import ViewAssessments from './Screens/ViewAssessments';
 import TakeAssessment from './Screens/TakeAssessment';
 import ViewAssessmentResults from './Screens/ViewAssessmentResults';
 import { ThemeProvider, Button } from 'react-native-elements';
-import CBPosts from './Screens/CbPosts'
+import CBPosts from './Screens/CBPosts'
 import CBReplies from './Screens/CBReplies'
 
 const Stack = createNativeStackNavigator();
