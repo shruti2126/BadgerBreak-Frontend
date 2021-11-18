@@ -44,6 +44,6 @@ export default function getStyling() {
             marginTop: 10, 
             marginBottom: 10,
             borderRadius: 10,
-        }
+        },
     })
 }

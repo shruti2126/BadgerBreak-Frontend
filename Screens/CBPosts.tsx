@@ -1,7 +1,8 @@
 import React, {useEffect, useState} from 'react'
-import { StyleSheet, Text, View } from 'react-native'
+import { StyleSheet, Text, ScrollView, View } from 'react-native'
 import PostCard from '../Components/PostsCard'
 import getPosts from  '../Hooks/getPosts'
+import getStyles from '../Styling/Styling'
 
 type Post = {
     _id: Number,
@@ -13,19 +14,7 @@ type Post = {
     NumReplies: Number,
 }
 
-// const getPosts = async () => {
-//     return [
-//         {
-//             _id: 1,
-//             Title: "You wont believe what I saw on the back of my pet turtle!", 
-//             Author: "The real G.O.A.T", 
-//             Text: "It was a turtle shell :|", 
-//             Date: new Date(2018, 11, 24, 10, 33, 30, 0), 
-//             Likes: 50000, 
-//             NumReplies: 100,
-//         }
-//     ]
-// }
+const styles = getStyles();
 
 const CBPosts = ({navigation, route}) => {
     const [posts, setPosts] = useState<Post[]>([])
@@ -39,17 +28,16 @@ const CBPosts = ({navigation, route}) => {
     }
 
     return (
-        <View>
-            { 
-                posts.map((post, i)=>{
-                    return <PostCard post={post} navigation={navigation} key={i}/>
-                })
-                
-            }
+        <View style={[styles.container, {justifyContent: 'flex-start'}]}>
+            <ScrollView style={{width: '100vw'}}>
+                { 
+                    posts.map((post, i)=>{
+                        return <PostCard post={post} navigation={navigation} key={i}/>
+                    })
+                }
+            </ScrollView>
         </View>
     )
 }
 
 export default CBPosts
-
-const styles = StyleSheet.create({})
