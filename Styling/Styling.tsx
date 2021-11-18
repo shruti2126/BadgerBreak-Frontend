@@ -10,11 +10,10 @@ export default function getStyling() {
         },
         container: {
             alignItems: 'center',
-            alignContent: 'center',
             backgroundColor: '#1f2f3f',
             flex: 1,
             flexDirection: "column",
-            justifyContent: 'center'
+            justifyContent: 'flex-start'
         },
         h1: {
             color: 'white',

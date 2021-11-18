@@ -32,7 +32,7 @@ const Login = ({ navigation }) => {
 	const styles = getStyling();
 
 	return (
-		<View style={styles.container}>
+		<View style={[styles.container, {justifyContent: 'center'}] }>
 			<Text style={{color: 'white', fontSize: 32}}>Badger Break</Text>
 			{mode === '' &&
 			<>
@@ -69,17 +69,17 @@ const Login = ({ navigation }) => {
 				<Button
 					onPress={async () => {
 						try { 
-							if (mode === 'Log In')
-								var result = await loginUser(email, password)
-							else
-								var result = await registerUser(email, password)
+							// if (mode === 'Log In')
+							// 	var result = await loginUser(email, password)
+							// else
+							// 	var result = await registerUser(email, password)
 
-							if (result.message !== undefined) {
-								setStatus(result.message);
-								return;
-							}
+							// if (result.message !== undefined) {
+							// 	setStatus(result.message);
+							// 	return;
+							// }
 							
-							setStorageData('user', {email: email, token: result.token})
+							// setStorageData('user', {email: email, token: result.token})
 							navigation.navigate('Home');
 						}
 						catch (e: any) { setStatus(e.toString()) }

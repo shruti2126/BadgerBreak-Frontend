@@ -2,6 +2,7 @@ import React, {useState, useEffect} from 'react'
 import {View, Text, TouchableOpacity, Button} from 'react-native'
 import getStorageData from '../Hooks/getStorageData'
 import AsyncStorage from '@react-native-async-storage/async-storage'
+import getStyling from '../Styling/Styling'
 
 type cCard = {
 	emotion: string,
@@ -42,8 +43,10 @@ export default function Home({navigation}) {
 		setcCards(cards !== null? cards : [])
 	}
 
+	const styles = getStyling();
+
 	return (
-		<View style={{backgroundColor: '#1f2f3f', flex: 1, justifyContent: 'flex-start', alignItems: 'center'}}>
+		<View style={styles.container}>
 			<Text style={{color: 'white', fontSize: 32}}>Home Screen</Text>
 			<Button 
 				onPress={loadData}

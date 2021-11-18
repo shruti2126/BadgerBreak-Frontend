@@ -1,7 +1,7 @@
 const axios = require('axios');
 const base64 = require('base-64');
 
-const url = 'http://192.168.1.43:3001/register';
+const url = 'http://192.168.1.76:3001/register';
 
 type response = {
 	token?: string,

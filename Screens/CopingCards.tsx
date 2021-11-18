@@ -119,7 +119,7 @@ export default function CopingCards() {
 					})}
 				</View>
 			</View>
-			<View>
+			<ScrollView>
 				{ccards.filter((ccard) => filterCards(ccard)).map((ccard, i) => {
 					return <CopingCard 
 						ccard={ccard} 
@@ -128,7 +128,7 @@ export default function CopingCards() {
 						delCard={() => {delCard(i)}}
 					/>
 				})}
-			</View>
+			</ScrollView>
 		</View>
 	)
 }
