@@ -4,7 +4,7 @@ import url from './getUrl';
 const getQuizes = async () => {
 	return await axios.get(url + '/quizes')
 		.then(response => response.data)
-		.catch(error => ['Could not fetch Quizes', error.message]);
+		.catch(error => []);
 }
 
 export default getQuizes;

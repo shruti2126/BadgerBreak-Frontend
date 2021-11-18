@@ -26,9 +26,8 @@ export default function ViewAssessments({navigation}) {
 
 	return (
 		<View style={styles.container}>
-			<Text style={styles.h1}>Take an Assessment</Text>
 			<ScrollView>
-				{quizes[0] !== "Could not fetch Quizes" && 
+				{quizes.length !== 0 && 
 					<View style={{display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'flex-start'}}>
 						{quizes.map((quiz, i) => {
 							return <QuizCard quiz={quiz} navigation={navigation} key={i} />

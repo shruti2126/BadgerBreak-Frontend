@@ -27,5 +27,14 @@ export default function getStyling() {
             fontSize: 16,
             marginBottom: 10
         },
+        card: {
+            backgroundColor: 'white',
+            margin: 20,
+            padding: 20,
+            display: 'flex', 
+            alignItems: 'center', 
+            justifyContent: 'center',
+            borderRadius: 10,
+        }
     })
 }

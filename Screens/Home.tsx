@@ -44,7 +44,6 @@ export default function Home({navigation}) {
 
 	return (
 		<View style={{backgroundColor: '#1f2f3f', flex: 1, justifyContent: 'flex-start', alignItems: 'center'}}>
-			<Text style={{color: 'white', fontSize: 32}}>Home Screen</Text>
 			<Button 
 				onPress={loadData}
 				title='Refresh Data'

@@ -1,5 +1,6 @@
 import React, {useState} from 'react';
 import {Button, Text, View, TouchableOpacity, TextInput} from 'react-native';
+import getStyles from '../Styling/Styling'
 
 type cCard = {
 	emotion: string,
@@ -12,18 +13,22 @@ type cardProps = {
 	delCard: () => void
 }
 
+const styles = getStyles();
+
 const CopingCard: React.FC<cardProps> = ({ccard, editCard, delCard}) => {
 	const [isEditing, setEditing] = useState<boolean>();
 	const [emotion, setEmotion] = useState<string>(ccard.emotion);
 	const [text, setText] = useState<string>(ccard.text);
 
 	return (
-        <TouchableOpacity 
-			style={{backgroundColor: "white", margin: 20, padding: 20, borderRadius: 10, width: 250}}
-			onPress={() => setEditing(true)}
-		>
-            <Text style={{fontSize: 14, fontWeight: 'bold'}}>{ccard.emotion}</Text>
-            <Text style={{fontSize: 14}}>{ccard.text}</Text>
+		<View style={[styles.card, {width: 250}]}>
+			<TouchableOpacity 
+				style={{display: 'flex', alignItems: 'center', justifyContent: 'center', width: 200}}
+				onPress={() => setEditing(!isEditing)}
+			>
+				<Text style={{fontSize: 14, fontWeight: 'bold'}}>{ccard.emotion}</Text>
+				<Text style={{fontSize: 14}}>{ccard.text}</Text>
+			</TouchableOpacity>
 			{isEditing ?
 			<>
 				<TextInput
@@ -54,7 +59,7 @@ const CopingCard: React.FC<cardProps> = ({ccard, editCard, delCard}) => {
 				</View>
 			</>: <></>
 			}
-        </TouchableOpacity>
+        </View>
 	)
 }
 

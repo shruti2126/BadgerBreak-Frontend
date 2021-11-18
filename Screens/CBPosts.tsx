@@ -30,10 +30,13 @@ type Post = {
 const CBPosts = ({navigation, route}) => {
     const [posts, setPosts] = useState<Post[]>([])
 
-    useEffect(async () => {
-        console.log("here")
-        setPosts(await getPosts())
+    useEffect(() => {
+        loadPosts()
     }, [])
+
+    const loadPosts = async () => {
+        setPosts(await getPosts());
+    }
 
     return (
         <View>
