@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from 'react'
-import { StyleSheet, Text, ScrollView, View } from 'react-native'
+import { Button, Text, ScrollView, View } from 'react-native'
 import PostCard from '../Components/PostsCard'
 import getPosts from  '../Hooks/getPosts'
 import getStyles from '../Styling/Styling'
@@ -29,6 +29,8 @@ const CBPosts = ({navigation, route}) => {
 
     return (
         <View style={[styles.container, {justifyContent: 'flex-start'}]}>
+            <Button onPress={() => {navigation.navigate('Create')}} title='Create Post' color="steelblue" />
+            <View style={{height: 20, width: 30}} />
             <ScrollView style={{width: '100vw'}}>
                 { 
                     posts.map((post, i)=>{

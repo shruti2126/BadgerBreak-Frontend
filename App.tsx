@@ -13,6 +13,7 @@ import ViewAssessmentResults from './Screens/ViewAssessmentResults';
 import { ThemeProvider, Button } from 'react-native-elements';
 import CBPosts from './Screens/CBPosts'
 import CBReplies from './Screens/CBReplies'
+import CMPost from './Screens/CMPost'
 
 const Stack = createNativeStackNavigator();
 const Drawer = createDrawerNavigator();
@@ -86,6 +87,7 @@ const CommunityNavigator: React.FC = () => {
     <CommunityStack.Navigator screenOptions={{headerShown: false}}>
       <CommunityStack.Screen name="Posts" component={CBPosts} />
       <CommunityStack.Screen name="Replies" component={CBReplies} />
+      <CommunityStack.Screen name="Create" component={CMPost} />
     </CommunityStack.Navigator>
   )
 }
