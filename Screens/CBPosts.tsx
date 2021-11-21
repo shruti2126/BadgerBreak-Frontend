@@ -24,12 +24,14 @@ const CBPosts = ({navigation, route}) => {
     }, [])
 
     const loadPosts = async () => {
-        setPosts(await getPosts());
+        const psts = await getPosts();
+        setPosts(psts.sort((a, b) => a.date.cmp(b.date)));
     }
 
     return (
         <View style={[styles.container, {justifyContent: 'flex-start'}]}>
-            <Button onPress={() => {navigation.navigate('Create')}} title='Create Post' color="steelblue" />
+            <View style={{height: 20, width: 30}} />
+            <Button onPress={() => {navigation.navigate('Create', {mode: true})}} title='Create Post' color="steelblue" />
             <View style={{height: 20, width: 30}} />
             <ScrollView style={{width: '100vw'}}>
                 { 

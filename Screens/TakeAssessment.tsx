@@ -52,13 +52,16 @@ export default function TakeAssessment({route, navigation}) {
 					return <View style={{width: '80%', margin: 10, backgroundColor: 'white', padding: 20, borderRadius: 10}} key={i}>
 						<Text style={{fontSize: 18}}>{question}</Text>
 						<Text style={{fontSize: 12, textAlign: 'center', marginTop: 5}}>Answer: {Math.trunc(scores[i])}</Text>
-						<Slider
-							value={scores[i]}
-							onValueChange={(value) => updateScore(i, value)}
-							maximumValue={quiz.maxPerQuestion}
-							minimumValue={quiz.minPerQuestion}
-							thumbStyle={{height: 30, width: 30, backgroundColor: 'lightblue'}}
-						/>
+						<View style={{display: 'flex', flexDirection: 'row', justifyContent: 'space-evenly'}}>
+						{scoreOptions.map((option) => {
+							return <Button 
+								onPress={() => {
+									updateScore(i, option);
+								}}
+								title={option.toString()}
+							/>
+						})}
+					</View>
 					</View>
 				})}
 				<TouchableHighlight
@@ -86,4 +89,14 @@ export default function TakeAssessment({route, navigation}) {
 		/>
 	})}
 </View>
+*/
+
+/* Slider implementation
+<Slider
+	value={scores[i]}
+	onValueChange={(value) => updateScore(i, value)}
+	maximumValue={quiz.maxPerQuestion}
+	minimumValue={quiz.minPerQuestion}
+	thumbStyle={{height: 30, width: 30, backgroundColor: 'lightblue'}}
+/>
 */

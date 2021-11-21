@@ -1,5 +1,6 @@
+import { setStatusBarTranslucent } from 'expo-status-bar'
 import React, {useEffect, useState} from 'react'
-import { TextInput, Text, View, TouchableOpacity } from 'react-native'
+import { TextInput, Text, View, TouchableOpacity, Button } from 'react-native'
 import getStorageData from '../Hooks/getStorageData'
 import getStyles from '../Styling/Styling'
 
@@ -23,10 +24,13 @@ type Post = {
 const styles = getStyles();
 
 const CMPost = ({navigation, route}) => {
-    const post = route.params.post
     
 	// Mode will be true if we are submitting a post, false if we are submitting a reply
-	const mode = post === undefined;
+	const mode = route.params.mode
+
+	if (!route.params.mode) {
+		var post = route.params.post
+	}
 
 	const [Title, setTitle] = useState('')
 	const [Txt,  setText ] = useState('')
@@ -34,7 +38,10 @@ const CMPost = ({navigation, route}) => {
     
     return (
         <View style={[styles.container, {justifyContent: 'flex-start'}]}>
-			<View style={styles.card}>
+			<View style={{height: 15, width: 30}} />
+			<Button onPress={() => {navigation.goBack()}} title='Back' color="steelblue" />
+			<View style={{height: 20, width: 30}} />
+			<View style={[styles.card, {width: '90%'}]}>
 				<Text>Make your {(mode)? "Post" : "Reply"}</Text>
 				{mode && 
 					<TextInput
@@ -49,7 +56,7 @@ const CMPost = ({navigation, route}) => {
 						onChangeText={setText}
 						value={Txt}
 						secureTextEntry={false}
-						placeholder="Email"
+						placeholder="Post Text"
 						style={styles.textInput}
 				/>
 				<TouchableOpacity
@@ -68,8 +75,8 @@ const CMPost = ({navigation, route}) => {
 							return;
 						}
 
-						if (post) {
-							const post: Post = {
+						if (mode) {
+							const newPost: Post = {
 								Title, 
 								Text: Txt, 
 								Author: user.email, 
@@ -79,6 +86,7 @@ const CMPost = ({navigation, route}) => {
 							}
 							// send it off to the api
 							try { 
+								setStat(JSON.stringify(newPost));
 								// await createPost(post);
 							}
 							catch (err) {
@@ -95,13 +103,14 @@ const CMPost = ({navigation, route}) => {
 							}
 							// send it off to the api
 							try { 
+								setStat(JSON.stringify(reply));
 								// await createReply(reply);
 							}
 							catch (err) {
 								setStat(err.message);
 							}
 						}
-						navigation.goBack();
+						//navigation.goBack();
 					}}
 				>
 					<Text style={{fontSize: 16, color: 'white'}}>Submit {(post)? "Post" : "Reply"}</Text>
@@ -109,7 +118,7 @@ const CMPost = ({navigation, route}) => {
 			</View>
 
 			{status !== '' && 
-				<View style={[styles.card, {borderWidth: 5, borderColor: 'red'}]}>
+				<View style={[styles.card, {borderWidth: 5, borderColor: 'red', maxWidth: '90%'}]}>
 					<Text>{status}</Text>
 				</View>
 			}
