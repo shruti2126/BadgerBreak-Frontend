@@ -1,5 +1,3 @@
-import React from 'react'
-import { StyleSheet, Text, View } from 'react-native'
 import axios from 'axios';
 import url from './getUrl'
 
@@ -10,5 +8,3 @@ const getPosts = async () => {
 }
 
 export default getPosts
-
-const styles = StyleSheet.create({})

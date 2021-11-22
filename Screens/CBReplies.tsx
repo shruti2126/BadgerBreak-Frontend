@@ -22,19 +22,19 @@ const CBReplies = ({navigation, route}) => {
     const [replies, setReplies] = useState<Replies[]>([])
     
     useEffect(() => {
+		navigation.addListener('focus', () => loadReplies())
         loadReplies();
     }, [])
 
     const loadReplies = async () => {
-        const repls = await getReplies();
-        setReplies(repls.sort((a, b) => a.date.cmp(b.date)));
+        const repls = await getReplies(post._id);
+        setReplies(repls);
     }
     
     return (
         <View style={[styles.container, {justifyContent: 'flex-start'}]}>
             <View style={{height: 15, width: 30}} />
             <Button onPress={() => {navigation.goBack()}} title='Back' color="steelblue" />
-            <View style={{height: 20, width: 30}} />
             <FullPost post={post} />
             {
                 replies.map((reply, i) => {

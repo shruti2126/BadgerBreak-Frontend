@@ -4,9 +4,14 @@ import axios from 'axios';
 import url from './getUrl'
 
 
-const getReplies = async () => {
-	return await axios.get(url + '/replies')
-		.then(response => response.data)
+const getReplies = async (postId) => {
+	return await fetch(url + '/replies', {
+		method: 'GET',
+		headers: {
+			postId: postId
+		}
+	})
+		.then(response => response.json())
 		.catch(error => ['Could not fetch replies']);
 }
 

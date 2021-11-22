@@ -2,6 +2,8 @@ import { setStatusBarTranslucent } from 'expo-status-bar'
 import React, {useEffect, useState} from 'react'
 import { TextInput, Text, View, TouchableOpacity, Button } from 'react-native'
 import getStorageData from '../Hooks/getStorageData'
+import postPost from '../Hooks/postPost'
+import postReply from '../Hooks/postReply'
 import getStyles from '../Styling/Styling'
 
 type Reply = {
@@ -27,20 +29,16 @@ const CMPost = ({navigation, route}) => {
     
 	// Mode will be true if we are submitting a post, false if we are submitting a reply
 	const mode = route.params.mode
-
-	if (!route.params.mode) {
-		var post = route.params.post
-	}
+	const post = route.params.post
 
 	const [Title, setTitle] = useState('')
-	const [Txt,  setText ] = useState('')
+	const [Txt,   setText ] = useState('')
     const [status, setStat] = useState('')
     
     return (
         <View style={[styles.container, {justifyContent: 'flex-start'}]}>
 			<View style={{height: 15, width: 30}} />
 			<Button onPress={() => {navigation.goBack()}} title='Back' color="steelblue" />
-			<View style={{height: 20, width: 30}} />
 			<View style={[styles.card, {width: '90%'}]}>
 				<Text>Make your {(mode)? "Post" : "Reply"}</Text>
 				{mode && 
@@ -65,12 +63,12 @@ const CMPost = ({navigation, route}) => {
 						// submit correct type of document to the api
 						const user = await getStorageData('user');
 
-						if (post && Title.length < 12) {
+						if (mode && Title.length < 12) {
 							setStat("Your Title must be at least 12 characters!");
 							return;
 						}
 
-						if (Text.length < 24) {
+						if (Txt.length < 24) {
 							setStat("Your Post must be at least 24 characters!");
 							return;
 						}
@@ -80,14 +78,13 @@ const CMPost = ({navigation, route}) => {
 								Title, 
 								Text: Txt, 
 								Author: user.email, 
-								Date: JSON.stringify(new Date().getDate()),
+								Date: JSON.stringify(new Date()),
 								Likes: 0,
 								NumReplies: 0
 							}
 							// send it off to the api
 							try { 
-								setStat(JSON.stringify(newPost));
-								// await createPost(post);
+								await postPost(newPost);
 							}
 							catch (err) {
 								setStat(err.message);
@@ -97,23 +94,22 @@ const CMPost = ({navigation, route}) => {
 							const reply: Reply = {
 								Text: Txt,
 								Author: user.email,
-								Date: JSON.stringify(new Date().getDate()),
-								PostId: post.postId,
+								Date: JSON.stringify(new Date()),
+								PostId: post._id,
 								Likes: 0
 							}
 							// send it off to the api
 							try { 
-								setStat(JSON.stringify(reply));
-								// await createReply(reply);
+								await postReply(reply);							
 							}
 							catch (err) {
 								setStat(err.message);
 							}
 						}
-						//navigation.goBack();
+						navigation.goBack();
 					}}
 				>
-					<Text style={{fontSize: 16, color: 'white'}}>Submit {(post)? "Post" : "Reply"}</Text>
+					<Text style={{fontSize: 16, color: 'white'}}>Submit {(mode)? "Post" : "Reply"}</Text>
 				</TouchableOpacity>
 			</View>
 

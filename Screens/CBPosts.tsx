@@ -20,19 +20,19 @@ const CBPosts = ({navigation, route}) => {
     const [posts, setPosts] = useState<Post[]>([])
 
     useEffect(() => {
+		navigation.addListener('focus', () => loadPosts())
         loadPosts()
     }, [])
 
     const loadPosts = async () => {
         const psts = await getPosts();
-        setPosts(psts.sort((a, b) => a.date.cmp(b.date)));
+        setPosts(psts);
     }
 
     return (
         <View style={[styles.container, {justifyContent: 'flex-start'}]}>
             <View style={{height: 20, width: 30}} />
-            <Button onPress={() => {navigation.navigate('Create', {mode: true})}} title='Create Post' color="steelblue" />
-            <View style={{height: 20, width: 30}} />
+            <Button onPress={() => {navigation.navigate('Create', {mode: true, post: null})}} title='Create Post' color="steelblue" />
             <ScrollView style={{width: '100vw'}}>
                 { 
                     posts.map((post, i)=>{
