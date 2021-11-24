@@ -85,6 +85,7 @@ const CMPost = ({navigation, route}) => {
 							// send it off to the api
 							try { 
 								await postPost(newPost);
+								navigation.goBack();
 							}
 							catch (err) {
 								setStat(err.message);
@@ -100,13 +101,13 @@ const CMPost = ({navigation, route}) => {
 							}
 							// send it off to the api
 							try { 
-								await postReply(reply);							
+								await postReply(reply);	
+								navigation.goBack();						
 							}
 							catch (err) {
 								setStat(err.message);
 							}
 						}
-						navigation.goBack();
 					}}
 				>
 					<Text style={{fontSize: 16, color: 'white'}}>Submit {(mode)? "Post" : "Reply"}</Text>
