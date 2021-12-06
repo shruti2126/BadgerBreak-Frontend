@@ -20,13 +20,17 @@ export default function CopingCards() {
 	const [emotion, setEmotion] = useState<string>('');
 	const [text, setText] = useState<string>('');
 
-	useEffect(async () => {
+	useEffect(() => {
+		loadCards();
+	}, []);
+
+	const loadCards = async () => {
 		const user = await getStorageData('user')
 		const cardArray = await getStorageData(user.email + ":cCards");
 		if (cardArray !== null) {
 		 	setcCards(cardArray)
 		}
-	}, []);
+	}
 
 	useEffect(() => {
 		let newFilter = []
@@ -73,9 +77,9 @@ export default function CopingCards() {
 
 	return (
 		<View style={styles.container}>
-			<Text style={styles.h1}>Coping Cards</Text>
+			<ScrollView style={{width: '100vw'}}>
 
-			<View style={{backgroundColor: '#DDDDDD', display: 'flex', alignItems: 'center', justifyContent: 'center', width: '90%', padding: 10, borderRadius: 10}}>
+			<View style={{backgroundColor: '#DDDDDD', display: 'flex', alignItems: 'center', justifyContent: 'center', width: '90%', padding: 20, borderRadius: 10, margin: '5%'}}>
 				<Text style={{fontSize: 14}}>Add a New Coping Card</Text>
 				<TextInput
 					onChangeText={setEmotion}
@@ -100,7 +104,7 @@ export default function CopingCards() {
 					<Text style={{color: 'black'}}>Filter Categories</Text> : <></>
 				}
 
-				<View style={{display: 'flex', justifyContent: 'center', flexWrap: 'wrap', flexDirection: 'row', alignItems: 'center'}}>
+				<View style={{display: 'flex', justifyContent: 'center', flexWrap: 'wrap', flexDirection: 'row', alignItems: 'center', alignContent: 'center'}}>
 					{allEmotions.map(emotion => {
 						return <Button
 							onPress={() => {
@@ -119,7 +123,7 @@ export default function CopingCards() {
 					})}
 				</View>
 			</View>
-			<ScrollView>
+			<View style={{alignItems: 'center'}}>
 				{ccards.filter((ccard) => filterCards(ccard)).map((ccard, i) => {
 					return <CopingCard 
 						ccard={ccard} 
@@ -128,6 +132,7 @@ export default function CopingCards() {
 						delCard={() => {delCard(i)}}
 					/>
 				})}
+			</View>
 			</ScrollView>
 		</View>
 	)

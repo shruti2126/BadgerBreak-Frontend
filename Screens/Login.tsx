@@ -1,14 +1,16 @@
 import React, {useState, useEffect} from 'react'
-import { StyleSheet, Text, View, TextInput} from 'react-native';
+import { TouchableHighlight, Text, View, TextInput} from 'react-native';
 import { Button } from 'react-native-elements';
 import loginUser from '../Hooks/loginUser'
 import registerUser from '../Hooks/registerUser'
 import setStorageData from '../Hooks/setStorageData'
 import getStorageData from '../Hooks/getStorageData'
 import getQuizes from '../Hooks/getQuizes'
-import getStyling from '../Styling/Styling'
+import getStyles from '../Styling/Styling'
 
 type mode = '' | 'Log In' | 'Register'
+
+const styles = getStyles();
 
 const Login = ({ navigation }) => {
 
@@ -29,67 +31,73 @@ const Login = ({ navigation }) => {
 
 	const [status, setStatus] = useState('');
 
-	const styles = getStyling();
-
 	return (
 		<View style={[styles.container, {justifyContent: 'center'}] }>
 			<Text style={{color: 'white', fontSize: 32}}>Badger Break</Text>
 			{mode === '' &&
 			<>
-				<Button
+				<TouchableHighlight
 					onPress={() => setMode('Log In')}
-					title="Log In"
-				/>
-				<Button
+					style={[styles.card, {backgroundColor: 'steelblue', height: 35, margin: 15}]}
+				>
+					<Text style={{color: 'white', fontSize: 16}}>Login</Text>
+				</TouchableHighlight>
+				<TouchableHighlight
 					onPress={() => setMode('Register')}
-					title="Register"
-				/>
+					style={[styles.card, {backgroundColor: 'steelblue', height: 35, margin: 15}]}
+				>
+					<Text style={{color: 'white', fontSize: 16}}>Register</Text>
+				</TouchableHighlight>
 			</>
 			}
 			{mode !== '' &&
 			<>
-				<Button
+				<TouchableHighlight
 					onPress={() => {setMode(''); setStatus('')}}
-					title="Back"
-				/>
+					style={[styles.card, {backgroundColor: 'steelblue', height: 35, margin: 15}]}
+				>
+					<Text style={{fontSize: 16, color: 'white'}}>Back</Text>
+				</TouchableHighlight>
 				<TextInput
 					onChangeText={setEmail}
 					value={email}
 					secureTextEntry={false}
 					placeholder="Email"
-					style={{backgroundColor: 'white', height: 40, width: 150, padding: 10, marginTop: 10, marginBottom: 10}}
+					style={styles.textInput}
 				/>
 				<TextInput
 					onChangeText={setPassword}
 					value={password}
 					secureTextEntry={true}
 					placeholder="Password"
-					style={{backgroundColor: 'white', height: 40, width: 150, padding: 10, marginBottom: 10}}
+					style={styles.textInput}
 				/>
-				<Button
+				<TouchableHighlight
+					style={[styles.card, {backgroundColor: 'steelblue', height: 35, margin: 15}]}
 					onPress={async () => {
 						try { 
-							// if (mode === 'Log In')
-							// 	var result = await loginUser(email, password)
-							// else
-							// 	var result = await registerUser(email, password)
+							if (mode === 'Log In')
+								var result = await loginUser(email, password)
+							else
+								var result = await registerUser(email, password)
 
-							// if (result.message !== undefined) {
-							// 	setStatus(result.message);
-							// 	return;
-							// }
+							if (result.message !== undefined) {
+								setStatus(result.message);
+								return;
+							}
 							
-							// setStorageData('user', {email: email, token: result.token})
+							setStorageData('user', {email: email, token: result.token})
 							navigation.navigate('Home');
 						}
 						catch (e: any) { setStatus(e.toString()) }
 					}}
-					title={mode}
-				/>
+				>
+					<Text style={{fontSize: 16, color: 'white'}}>{mode}</Text>
+				</TouchableHighlight>
 			</>
 			}
 			{status !== '' && 
-				<View style={{backgroundColor: 'white', borderColor: 'red', borderWidth: 5}}>
+				<View style={[styles.card, {borderColor: 'red', borderWidth: 3}]}>
 					<Text style={{color: 'red', fontSize: 18}}>{status}</Text>
 				</View>
 			}

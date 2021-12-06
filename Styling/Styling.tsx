@@ -26,5 +26,25 @@ export default function getStyling() {
             fontSize: 16,
             marginBottom: 10
         },
+        card: {
+            backgroundColor: 'white',
+            margin: 20,
+            padding: 20,
+            display: 'flex', 
+            alignItems: 'center', 
+            justifyContent: 'center',
+            borderRadius: 10,
+        },
+        textInput: {
+            backgroundColor: 'white', 
+            height: 40, 
+            width: 150, 
+            padding: 10, 
+            marginTop: 10, 
+            marginBottom: 10,
+            borderRadius: 10,
+            borderWidth: 1,
+            borderColor: 'black',
+        },
     })
 }

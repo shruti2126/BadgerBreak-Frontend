@@ -1,5 +1,5 @@
 import React, {useState, useEffect} from 'react'
-import {View, Text, TouchableOpacity, Button} from 'react-native'
+import {View, Text, TouchableOpacity, ScrollView} from 'react-native'
 import getStorageData from '../Hooks/getStorageData'
 import AsyncStorage from '@react-native-async-storage/async-storage'
 import getStyling from '../Styling/Styling'
@@ -30,6 +30,7 @@ export default function Home({navigation}) {
 	const [showAssessments, setShowAssessments] = useState<boolean>(false);
 
 	useEffect(() => {
+		navigation.addListener('focus', () => loadData())
 		loadData();
 	}, [])
 
@@ -46,56 +47,56 @@ export default function Home({navigation}) {
 	const styles = getStyling();
 
 	return (
-		<View style={styles.container}>
-			<Text style={{color: 'white', fontSize: 32}}>Home Screen</Text>
-			<Button 
-				onPress={loadData}
-				title='Refresh Data'
-				color='green'
-			/>
+		<View style={[styles.container, {justifyContent: 'flex-start'}]}>
+			<ScrollView style={{width: '100vw'}}>
+				<TouchableOpacity 
+					style={styles.card}
+					onPress={() => navigation.navigate('Coping Cards')}
+				>
+					<Text style={{fontSize: 12, fontWeight: 'bold'}}>Coping Cards</Text>
+					<Text style={{fontSize: 12}}>You have {cCards.length} Coping Cards</Text>
+				</TouchableOpacity>
 
-			<View style={{backgroundColor: '#DDDDDD', display: 'flex', alignItems: 'center', justifyContent: 'center', width: '90%', padding: 10, borderRadius: 10, margin: 10, marginBottom: 20}}>
-				<Text style={{fontSize: 12, fontWeight: 'bold'}}>Coping Cards</Text>
-				<Text style={{fontSize: 12}}>You have {cCards.length} Coping Cards</Text>
-			</View>
+				<TouchableOpacity 
+					style={styles.card}
+					onPress={() => setShowAssessments(!showAssessments)}
+				>
+					<Text style={{fontSize: 12, fontWeight: 'bold'}}>Your Assessments</Text>
+					<Text style={{fontSize: 12}}>You have taken {quizes.length} Assessment(s)</Text>
+					<Text style={{fontSize: 12}}>Press Here to show/hide</Text>
+					{showAssessments &&
+						<>
+							{quizes.map((quiz: quizScoreType) => {
+								return (<View style={{borderColor: '#000', borderWidth: 1, padding: 10, margin: 10}}>
+									<Text style={{fontSize: 12}}>{quiz.title}: {quiz.score}</Text>
+								</View>)
+							})}
+						</>
+					}
+				</TouchableOpacity>
 
-			<TouchableOpacity 
-				style={{backgroundColor: '#DDDDDD', display: 'flex', alignItems: 'center', justifyContent: 'center', width: '90%', padding: 10, borderRadius: 10, margin: 10, marginBottom: 20}}
-				onPress={() => setShowAssessments(!showAssessments)}
-			>
-				<Text style={{fontSize: 12, fontWeight: 'bold'}}>Your Assessments</Text>
-				<Text style={{fontSize: 12}}>You have taken {quizes.length} Assessment(s)</Text>
-				<Text style={{fontSize: 12}}>Press Here to show/hide</Text>
-				{showAssessments &&
-					<>
-						{quizes.map((quiz: quizScoreType) => {
-							return (<View style={{borderColor: '#000', borderWidth: 1, padding: 10, margin: 10}}>
-								<Text style={{fontSize: 12}}>{quiz.title}: {quiz.score}</Text>
-							</View>)
-						})}
-					</>
-				}
-			</TouchableOpacity>
+				<TouchableOpacity 
+					style={[styles.card, {backgroundColor: 'steelblue'}]}	
+					onPress={async () => {
+						await AsyncStorage.removeItem('user');
+						navigation.goBack();
+					}}
+				>
+					<Text style={{fontSize: 16, color: 'white'}}>Sign Out</Text>
+				</TouchableOpacity>
 
-			<TouchableOpacity 
-				style={{padding: 20, margin: 15, backgroundColor: 'lightblue', display: 'flex', alignItems: 'center', justifyContent: 'center', borderRadius: 10}}	
-				onPress={async () => {
-					await AsyncStorage.removeItem('user');
-					navigation.goBack();
-				}}
-			>
-				<Text style={{fontSize: 12, color: 'black'}}>Sign Out</Text>
-			</TouchableOpacity>
-
-			<TouchableOpacity 
-				style={{padding: 20, margin: 15, backgroundColor: 'red', display: 'flex', alignItems: 'center', justifyContent: 'center', borderRadius: 10}}	
-				onPress={async () => {
-					await AsyncStorage.clear();
-					navigation.goBack();
-				}}
-			>
-				<Text style={{fontSize: 12, color: 'white'}}>Delete All Your Data</Text>
-			</TouchableOpacity>
+				<TouchableOpacity 
+					style={[styles.card, {backgroundColor: 'red'}]}	
+					onPress={async () => {
+						const user = await getStorageData('user')
+						await AsyncStorage.removeItem(user.email + ':cCards');
+						await AsyncStorage.removeItem(user.email + ':quizes');
+						await loadData();
+					}}
+				>
+					<Text style={{fontSize: 16, color: 'white'}}>Delete Your Local Data</Text>
+				</TouchableOpacity>
+			</ScrollView>
 		</View>
 	)
 }

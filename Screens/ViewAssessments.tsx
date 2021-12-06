@@ -19,20 +19,25 @@ export default function ViewAssessments({navigation}) {
 
 	const [quizes, setQuizes] = useState<Quiz[]>([]);
 
-	useEffect(async () => {
+	useEffect(() => {
+		loadQuizes();
+	}, []);
+
+	const loadQuizes = async () => {
 		const quizArray = await getQuizes()
 		setQuizes(quizArray);
-	}, []);
+	}
 
 	return (
 		<View style={styles.container}>
-			<Text style={styles.h1}>Take an Assessment</Text>
 			<ScrollView>
-				<View style={{display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'flex-start'}}>
-					{quizes.map((quiz, i) => {
-						return <QuizCard quiz={quiz} navigation={navigation} key={i} />
-					})}
-				</View>
+				{quizes.length !== 0 && 
+					<View style={{display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'flex-start'}}>
+						{quizes.map((quiz, i) => {
+							return <QuizCard quiz={quiz} navigation={navigation} key={i} />
+						})}
+					</View>
+				}
 			</ScrollView>
 		</View>
 	)

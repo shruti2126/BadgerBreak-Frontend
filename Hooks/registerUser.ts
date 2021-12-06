@@ -1,7 +1,6 @@
 const axios = require('axios');
 const base64 = require('base-64');
-
-const url = 'http://192.168.1.76:3001/register';
+import url from './getUrl'
 
 type response = {
 	token?: string,
@@ -11,7 +10,7 @@ type response = {
 const registerUser = async (email: string, password: string): Promise<response> => {
 	const encoded = base64.encode(email + ':' + password);
 
-	return await fetch(url, {
+	return await fetch(url + '/register', {
 		method: 'POST',
 		headers: {
 			token: encoded,
