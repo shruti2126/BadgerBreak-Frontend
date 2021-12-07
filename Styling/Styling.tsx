@@ -43,7 +43,7 @@ export default function getStyling() {
             alignItems: 'center', 
             justifyContent: 'center',
             borderRadius: 10,
-            flex: .04,
+            flex: .025,
         },
         textInput: {
             backgroundColor: 'white', 

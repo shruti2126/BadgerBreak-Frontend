@@ -38,13 +38,13 @@ const Login = ({ navigation }) => {
 			<>
 				<TouchableHighlight
 					onPress={() => setMode('Log In')}
-					style={[styles.loginCard, {backgroundColor: 'steelblue', height: 35, margin: 15}]}
+					style={[styles.loginCard, {backgroundColor: 'steelblue', height: 45, margin: 15}]}
 				>
 					<Text style={{color: 'white', fontSize: 16}}>Login</Text>
 				</TouchableHighlight>
 				<TouchableHighlight
 					onPress={() => setMode('Register')}
-					style={[styles.loginCard, {backgroundColor: 'steelblue', height: 35, margin: 15}]}
+					style={[styles.loginCard, {backgroundColor: 'steelblue', height: 45, margin: 15}]}
 				>
 					<Text style={{color: 'white', fontSize: 16}}>Register</Text>
 				</TouchableHighlight>
@@ -54,7 +54,7 @@ const Login = ({ navigation }) => {
 			<>
 				<TouchableHighlight
 					onPress={() => {setMode(''); setStatus('')}}
-					style={[styles.loginCard, {backgroundColor: 'steelblue', height: 35, margin: 15}]}
+					style={[styles.loginCard, {backgroundColor: 'steelblue', minHeight: 35, margin: 15}]}
 				>
 					<Text style={{fontSize: 16, color: 'white'}}>Back</Text>
 				</TouchableHighlight>
@@ -73,7 +73,7 @@ const Login = ({ navigation }) => {
 					style={styles.textInput}
 				/>
 				<TouchableHighlight
-					style={[styles.loginCard, {backgroundColor: 'steelblue', height: 35, margin: 15}]}
+					style={[styles.loginCard, {backgroundColor: 'steelblue', minHeight: 35, margin: 15}]}
 					onPress={async () => {
 						try { 
 							if (mode === 'Log In')
