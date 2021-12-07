@@ -1,0 +1,37 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders correctly with defaults 1`] = `
+<View
+  style={
+    Array [
+      Object {
+        "alignItems": "center",
+        "backgroundColor": "white",
+        "borderRadius": 10,
+        "display": "flex",
+        "justifyContent": "center",
+        "margin": 20,
+        "padding": 20,
+      },
+      Object {
+        "alignItems": "flex-start",
+        "marginLeft": 0,
+        "marginRight": "30%",
+        "width": "65%",
+      },
+    ]
+  }
+>
+  <Text>
+    Test Reply
+  </Text>
+  <Text>
+    Author: 
+    Test Reply Author
+  </Text>
+  <Text>
+    Likes: 
+    3
+  </Text>
+</View>
+`;

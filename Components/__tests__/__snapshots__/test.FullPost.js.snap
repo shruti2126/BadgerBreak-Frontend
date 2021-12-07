@@ -4,7 +4,7 @@ exports[`renders correctly with defaults 1`] = `
 <View
   accessible={true}
   collapsable={false}
-  focusable={true}
+  focusable={false}
   nativeID="animatedComponent"
   onClick={[Function]}
   onResponderGrant={[Function]}
@@ -23,21 +23,35 @@ exports[`renders correctly with defaults 1`] = `
       "margin": 20,
       "opacity": 1,
       "padding": 20,
+      "width": "100%",
     }
   }
 >
   <Text
     style={
       Object {
-        "fontSize": 14,
+        "fontSize": 24,
         "fontWeight": "bold",
       }
     }
   >
-    Fragility of Happiness Scale
+    Test Title
+  </Text>
+  <Text
+    style={
+      Object {
+        "fontSize": 14,
+      }
+    }
+  />
+  <Text>
+    Author: 
+    Test Author
   </Text>
   <Text>
-    How happy are you... really?
+    Likes: 
+    5
+     
   </Text>
 </View>
 `;

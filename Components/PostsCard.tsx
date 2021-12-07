@@ -1,10 +1,16 @@
 import React from 'react'
 import { StyleSheet, Text, View, TouchableOpacity } from 'react-native'
 import getStyles from '../Styling/Styling'
+import {Post} from '../Interfaces/Interfaces'
+
+type propType = {
+    post: Post,
+    navigation: any,
+}
 
 const styles = getStyles();
 
-const PostCard = ({post, navigation}) => {
+const PostCard: React.FC<propType> = ({post, navigation}) => {
     return (
         <TouchableOpacity 
             onPress={() => {navigation.navigate("Replies", {post})}}

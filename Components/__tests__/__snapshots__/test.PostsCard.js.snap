@@ -29,15 +29,19 @@ exports[`renders correctly with defaults 1`] = `
   <Text
     style={
       Object {
-        "fontSize": 14,
-        "fontWeight": "bold",
+        "fontSize": 24,
       }
     }
   >
-    Fragility of Happiness Scale
+    Test Title
   </Text>
   <Text>
-    How happy are you... really?
+    Test Author
   </Text>
+  <Text>
+    5
+     
+  </Text>
+  <Text />
 </View>
 `;
