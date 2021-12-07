@@ -1,10 +1,15 @@
 import React from 'react'
 import { StyleSheet, Text, View, TouchableOpacity } from 'react-native'
+import { Post } from '../Interfaces/Interfaces'
 import getStyles from '../Styling/Styling'
 
 const styles = getStyles();
 
-const FullPost = ({post}) => {
+type propType = {
+    post: Post
+}
+
+const FullPost: React.FC<propType> = ({post}) => {
     return (
         <TouchableOpacity
             style={[styles.card, {width: '100%'}]}

@@ -126,7 +126,7 @@ export default function CopingCards() {
 			<View style={{alignItems: 'center'}}>
 				{ccards.filter((ccard) => filterCards(ccard)).map((ccard, i) => {
 					return <CopingCard 
-						ccard={ccard} 
+						copingCard={ccard} 
 						key={i} 
 						editCard={(cCard: cCard) => {updateCard(i, cCard)}}
 						delCard={() => {delCard(i)}}

@@ -5,14 +5,7 @@ import FullPost from '../Components/FullPost'
 import ReplyCard from '../Components/ReplyCard'
 import getReplies from '../Hooks/getReplies'
 import getStyles from '../Styling/Styling'
-
-type Replies = {
-    Text: String, 
-    Author: String, 
-    PostId: Number,
-    Date: String, 
-    Likes: Number
-}
+import { Post, Replies } from '../Interfaces/Interfaces'
 
 const styles = getStyles();
 

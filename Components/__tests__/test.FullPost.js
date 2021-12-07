@@ -2,16 +2,20 @@
 // components/__tests__/Hello.tsx
 import React from 'react';
 import renderer from 'react-test-renderer';
-import CopingCard from '../CopingCard';
+import FullPost from '../FullPost';
 
-const mockCopingCard = {
-    emotion: "Test emotion",
-    text: "Test text",
+const mockPost = {
+    _id: 3484,
+    Title: "Test Title",
+    Author: "Test Author",
+    Date: new Date(2021, 23, 7),
+    Likes: 5,
+    NumReplis: 0,
 }
 
 it('renders correctly with defaults', () => {
   const component = renderer
-    .create(<CopingCard ccard = {mockCopingCard} />)
+    .create(<FullPost post={mockPost}/>)
     .toJSON();
   expect(component).toMatchSnapshot();
 });

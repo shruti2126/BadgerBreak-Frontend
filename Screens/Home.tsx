@@ -3,19 +3,11 @@ import {View, Text, TouchableOpacity, ScrollView} from 'react-native'
 import getStorageData from '../Hooks/getStorageData'
 import AsyncStorage from '@react-native-async-storage/async-storage'
 import getStyling from '../Styling/Styling'
+import { Quiz } from '../Interfaces/Interfaces'
 
 type cCard = {
 	emotion: string,
 	text: string
-}
-
-type Quiz = {
-	title: string,
-	description: string,
-	questions: string[],
-	minPerQuestion: number,
-	maxPerQuestion: number,
-	answerLegend: string[],
 }
 
 type quizScoreType = {

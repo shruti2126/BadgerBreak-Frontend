@@ -2,14 +2,14 @@ import React, {useState} from 'react';
 import {Button, Text, View, TouchableOpacity, TextInput} from 'react-native';
 import getStyles from '../Styling/Styling'
 
-type cCard = {
+type copingCardType = {
 	emotion: string,
 	text: string
 }
 
 type cardProps = {
-	ccard: cCard,
-	editCard: (cCard: cCard) => void,
+	ccard: copingCardType,
+	editCard: (cCard: copingCardType) => void,
 	delCard: () => void
 }
 
