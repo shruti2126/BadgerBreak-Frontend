@@ -35,6 +35,16 @@ export default function getStyling() {
             justifyContent: 'center',
             borderRadius: 10,
         },
+        loginCard: {
+            backgroundColor: 'white',
+            margin: 20,
+            padding: 10,
+            display: 'flex', 
+            alignItems: 'center', 
+            justifyContent: 'center',
+            borderRadius: 10,
+            flex: .04,
+        },
         textInput: {
             backgroundColor: 'white', 
             height: 40, 
