@@ -1,5 +1,5 @@
 import React, {useState, useEffect} from 'react'
-import { TouchableHighlight, Text, View, TextInput} from 'react-native';
+import { TouchableHighlight, Text, View, TextInput, ScrollView} from 'react-native';
 import { Button } from 'react-native-elements';
 import loginUser from '../Hooks/loginUser'
 import registerUser from '../Hooks/registerUser'
@@ -15,7 +15,7 @@ const styles = getStyles();
 const Login = ({ navigation }) => {
 
 	useEffect(() => {
-		loginIfUser();
+		//loginIfUser();
 	}, [])
 
 	const loginIfUser = async () => {
@@ -32,19 +32,19 @@ const Login = ({ navigation }) => {
 	const [status, setStatus] = useState('');
 
 	return (
-		<View style={[styles.container, {justifyContent: 'center'}] }>
+		<View style={[styles.container, {justifyContent: 'center', minHeight: 500}] }>
 			<Text style={{color: 'white', fontSize: 32}}>Badger Break</Text>
 			{mode === '' &&
 			<>
 				<TouchableHighlight
 					onPress={() => setMode('Log In')}
-					style={[styles.loginCard, {backgroundColor: 'steelblue', height: 45, margin: 15}]}
+					style={[styles.loginCard, {backgroundColor: 'steelblue', minHeight: 35, margin: 15}]}
 				>
 					<Text style={{color: 'white', fontSize: 16}}>Login</Text>
 				</TouchableHighlight>
 				<TouchableHighlight
 					onPress={() => setMode('Register')}
-					style={[styles.loginCard, {backgroundColor: 'steelblue', height: 45, margin: 15}]}
+					style={[styles.loginCard, {backgroundColor: 'steelblue', minHeight: 35, margin: 15}]}
 				>
 					<Text style={{color: 'white', fontSize: 16}}>Register</Text>
 				</TouchableHighlight>
@@ -52,12 +52,6 @@ const Login = ({ navigation }) => {
 			}
 			{mode !== '' &&
 			<>
-				<TouchableHighlight
-					onPress={() => {setMode(''); setStatus('')}}
-					style={[styles.loginCard, {backgroundColor: 'steelblue', minHeight: 35, margin: 15}]}
-				>
-					<Text style={{fontSize: 16, color: 'white'}}>Back</Text>
-				</TouchableHighlight>
 				<TextInput
 					onChangeText={setEmail}
 					value={email}
@@ -72,8 +66,15 @@ const Login = ({ navigation }) => {
 					placeholder="Password"
 					style={styles.textInput}
 				/>
+				<View style={{display: 'flex', flexDirection: 'row'}}>
 				<TouchableHighlight
-					style={[styles.loginCard, {backgroundColor: 'steelblue', minHeight: 35, margin: 15}]}
+					onPress={() => {setMode(''); setStatus('')}}
+					style={[styles.loginCard, {backgroundColor: 'steelblue', minHeight: 35, margin: 15, minWidth: 100}]}
+				>
+					<Text style={{fontSize: 16, color: 'white'}}>Back</Text>
+				</TouchableHighlight>
+				<TouchableHighlight
+					style={[styles.loginCard, {backgroundColor: 'steelblue', minHeight: 35, margin: 15, minWidth: 100}]}
 					onPress={async () => {
 						try { 
 							if (mode === 'Log In')
@@ -94,10 +95,11 @@ const Login = ({ navigation }) => {
 				>
 					<Text style={{fontSize: 16, color: 'white'}}>{mode}</Text>
 				</TouchableHighlight>
+				</View>
 			</>
 			}
 			{status !== '' && 
-				<View style={[styles.loginCard, {borderColor: 'red', borderWidth: 3}]}>
+				<View style={[styles.loginCard, {borderColor: 'red', borderWidth: 3, minHeight: 100}]}>
 					<Text style={{color: 'red', fontSize: 18}}>{status}</Text>
 				</View>
 			}

@@ -77,7 +77,7 @@ export default function CopingCards() {
 
 	return (
 		<View style={styles.container}>
-			<ScrollView style={{width: '100vw'}}>
+			<ScrollView>
 
 			<View style={{backgroundColor: '#DDDDDD', display: 'flex', alignItems: 'center', justifyContent: 'center', width: '90%', padding: 20, borderRadius: 10, margin: '5%'}}>
 				<Text style={{fontSize: 14}}>Add a New Coping Card</Text>

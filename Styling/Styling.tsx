@@ -48,7 +48,7 @@ export default function getStyling() {
         textInput: {
             backgroundColor: 'white', 
             height: 40, 
-            width: 150, 
+            width: '65%', 
             padding: 10, 
             marginTop: 10, 
             marginBottom: 10,

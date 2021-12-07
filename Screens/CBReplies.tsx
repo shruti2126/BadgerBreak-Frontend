@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from 'react'
-import { StyleSheet, Button, Text, View } from 'react-native'
+import { StyleSheet, Button, Text, View, ScrollView } from 'react-native'
 import PostsCard from '../Components/PostsCard'
 import FullPost from '../Components/FullPost'
 import ReplyCard from '../Components/ReplyCard'
@@ -29,11 +29,13 @@ const CBReplies = ({navigation, route}) => {
             <View style={{height: 15, width: 30}} />
             <Button onPress={() => {navigation.goBack()}} title='Back' color="steelblue" />
             <FullPost post={post} />
-            {
-                replies.map((reply, i) => {
-                    return <ReplyCard reply={reply} author={post.author} key={i}/>
-                })
-            }
+            <ScrollView>
+                {
+                    replies.map((reply, i) => {
+                        return <ReplyCard reply={reply} author={post.author} key={i}/>
+                    })
+                }
+            </ScrollView>
             <View style={{height: 20, width: 30}} />
             <Button onPress={() => {navigation.navigate('Create', {mode: false, post: post})}} title='Reply' color="steelblue" />
             <View style={{height: 15, width: 30}} />
