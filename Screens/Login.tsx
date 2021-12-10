@@ -15,7 +15,7 @@ const styles = getStyles();
 const Login = ({ navigation }) => {
 
 	useEffect(() => {
-		//loginIfUser();
+		loginIfUser();
 	}, [])
 
 	const loginIfUser = async () => {
@@ -53,7 +53,7 @@ const Login = ({ navigation }) => {
 			{mode !== '' &&
 			<>
 				<TextInput
-					onChangeText={setEmail}
+					onChangeText={(email: string) => {setEmail(email.toLowerCase())}}
 					value={email}
 					secureTextEntry={false}
 					placeholder="Email"
