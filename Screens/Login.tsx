@@ -14,6 +14,7 @@ const styles = getStyles();
 
 const Login = ({ navigation }) => {
 
+	console.log("hello!")
 	useEffect(() => {
 		//loginIfUser();
 	}, [])
@@ -53,7 +54,7 @@ const Login = ({ navigation }) => {
 			{mode !== '' &&
 			<>
 				<TextInput
-					onChangeText={setEmail}
+					onChangeText={(email : string) => setEmail(email.toLowerCase())}
 					value={email}
 					secureTextEntry={false}
 					placeholder="Email"
@@ -81,7 +82,7 @@ const Login = ({ navigation }) => {
 								var result = await loginUser(email, password)
 							else
 								var result = await registerUser(email, password)
-
+							console.log("hello!")
 							if (result.message !== undefined) {
 								setStatus(result.message);
 								return;
