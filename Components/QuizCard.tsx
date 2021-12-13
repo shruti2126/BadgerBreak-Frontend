@@ -9,6 +9,7 @@ type QuizCardType = {
 	minPerQuestion: number,
 	maxPerQuestion: number,
 	answerLegend: string[],
+	scoreKey: string[]
 }
 
 type propType = {
