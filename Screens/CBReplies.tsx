@@ -24,8 +24,9 @@ const CBReplies = ({navigation, route}) => {
         setReplies(repls);
     }
     
+    //{justifyContent: 'flex-start'}
     return (
-        <View style={[styles.container, {justifyContent: 'flex-start'}]}>
+        <View style={[styles.repliesContainer]}>
             <View style={{height: 15, width: 30}} />
             <Button onPress={() => {navigation.goBack()}} title='Back' color="steelblue" />
             <FullPost post={post} />

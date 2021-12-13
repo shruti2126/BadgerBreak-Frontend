@@ -1,5 +1,5 @@
 import React, {useState, useEffect} from 'react'
-import {View, Text, TouchableOpacity, ScrollView} from 'react-native'
+import {View, Text, TouchableOpacity, ScrollView, ImageBackground} from 'react-native'
 import getStorageData from '../Hooks/getStorageData'
 import AsyncStorage from '@react-native-async-storage/async-storage'
 import getStyling from '../Styling/Styling'
@@ -39,6 +39,7 @@ export default function Home({navigation}) {
 	const styles = getStyling();
 
 	return (
+		<ImageBackground source={require('../fear.png')} resizeMode="cover" style={styles.image}> 
 		<View style={[styles.container, {justifyContent: 'flex-start'}]}>
 			<ScrollView>
 				<TouchableOpacity 
@@ -88,7 +89,9 @@ export default function Home({navigation}) {
 				>
 					<Text style={{fontSize: 16, color: 'white'}}>Delete Your Local Data</Text>
 				</TouchableOpacity>
+				
 			</ScrollView>
 		</View>
+		</ImageBackground > 
 	)
 }

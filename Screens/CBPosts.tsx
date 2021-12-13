@@ -30,10 +30,11 @@ const CBPosts = ({navigation, route}) => {
     }
 
     return (
-        <View style={[styles.container, {justifyContent: 'flex-start'}]}>
+        
+        <View style={styles.post_container}>
             <View style={{height: 20, width: 30}} />
             <Button onPress={() => {navigation.navigate('Create', {mode: true, post: null})}} title='Create Post' color="steelblue" />
-            <ScrollView>
+            <ScrollView >
                 { 
                     posts.map((post, i)=>{
                         return <PostCard post={post} navigation={navigation} key={i}/>

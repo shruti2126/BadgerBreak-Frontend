@@ -12,7 +12,7 @@ type propType = {
 const FullPost: React.FC<propType> = ({post}) => {
     return (
         <TouchableOpacity
-            style={[styles.card, {width: '100%'}]}
+            style={[styles.postCard, {width: '100%'}]}
         >
             <Text style={{fontSize: 24, fontWeight: 'bold'}}>{post.Title}</Text>
             <Text style={{fontSize: 14}}>{post.Text}</Text>

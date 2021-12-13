@@ -10,10 +10,16 @@ export default function getStyling() {
         },
         container: {
             alignItems: 'center',
-            backgroundColor: '#1f2f3f',
+            //backgroundColor: '#1f2f3f',
+            backgroundColor: 'rgba( 0, 0, 0, 0.7)',
             flex: 1,
             flexDirection: "column",
             justifyContent: 'flex-start'
+        },
+        repliesContainer: {
+            backgroundColor: '#1f2f3f',
+            alignItems: 'center',
+            flex: 1
         },
         h1: {
             color: 'white',
@@ -34,6 +40,30 @@ export default function getStyling() {
             alignItems: 'center', 
             justifyContent: 'center',
             borderRadius: 10,
+        },
+        postCard: {
+            backgroundColor: 'white',
+            //flex: 1,
+            marginTop: 10,
+            padding: 10,
+            borderWidth: 2,
+            borderRadius: 10,
+            borderColor: 'skyblue'
+        },
+        post_container: {
+            backgroundColor: '#1f2f3f',
+            alignItems: 'center'
+        },
+        like : {
+            flex: 1,
+            flexDirection: 'row',
+            justifyContent: 'space-around'
+        },
+        like_image:{
+            width: 25, 
+            height: 25,
+            flex: 1,
+            flexDirection: 'row'
         },
         loginCard: {
             backgroundColor: 'white',
@@ -56,5 +86,13 @@ export default function getStyling() {
             borderWidth: 1,
             borderColor: 'black',
         },
+        image: {
+            flex: 1,
+            justifyContent: 'center',
+            alignContent: 'center',
+            width: '100%',
+            height: '100%',
+        }, 
+        
     })
 }
