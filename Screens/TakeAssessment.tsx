@@ -1,7 +1,8 @@
 import React, {useState} from 'react'
-import {ScrollView, Text, View, Button, TouchableHighlight} from 'react-native';
+import {ScrollView, Text, View, Button, TouchableHighlight, ImageBackground} from 'react-native';
 import {Slider} from 'react-native-elements';
 import QuizQuestion from '../Components/QuizQuestion';
+import getStyling from '../Styling/Styling';
 
 type Quiz = {
 	title: string,
@@ -23,6 +24,8 @@ class ScoreManager {
 	}
 }
 
+const styles = getStyling();
+
 export default function TakeAssessment({route, navigation}) {
 	const quiz = route.params.quiz;
 
@@ -38,7 +41,8 @@ export default function TakeAssessment({route, navigation}) {
 	}
 
 	return (
-		<View style={{backgroundColor: '#1f2f3f', display: 'flex', alignItems: 'center', justifyContent: 'flex-start'}}>
+		<ImageBackground source={require('../assets/field.jpg')} resizeMode="cover" style={[styles.image, {flex: 1}]}> 
+		<View style={styles.container}>
 		<ScrollView>
 			<View style={{display: 'flex', flexDirection: 'column', justifyContent: 'flex-start', alignItems: 'center', marginTop: 15}}>
 				<View style={{width: '90%', backgroundColor: 'white', padding: 20, borderRadius: 10}}>
@@ -81,6 +85,7 @@ export default function TakeAssessment({route, navigation}) {
 			<View style={{height: 75}}></View>
 		</ScrollView>
 		</View>
+		</ImageBackground>
 	)
 }
 

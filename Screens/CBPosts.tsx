@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from 'react'
-import { Button, Text, ScrollView, View } from 'react-native'
+import { Button, Text, ScrollView, View, ImageBackground } from 'react-native'
 import PostCard from '../Components/PostsCard'
 import getPosts from  '../Hooks/getPosts'
 import getStyles from '../Styling/Styling'
@@ -30,7 +30,7 @@ const CBPosts = ({navigation, route}) => {
     }
 
     return (
-        
+		<ImageBackground source={require('../assets/com.jpg')} resizeMode="cover" style={[styles.image, {flex: 1}]}> 
         <View style={styles.post_container}>
             <View style={{height: 20, width: 30}} />
             <Button onPress={() => {navigation.navigate('Create', {mode: true, post: null})}} title='Create Post' color="steelblue" />
@@ -42,6 +42,7 @@ const CBPosts = ({navigation, route}) => {
                 }
             </ScrollView>
         </View>
+        </ImageBackground>
     )
 }
 

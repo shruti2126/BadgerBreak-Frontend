@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from 'react'
-import { StyleSheet, Button, Text, View, ScrollView } from 'react-native'
+import { StyleSheet, Button, Text, View, ScrollView, ImageBackground } from 'react-native'
 import PostsCard from '../Components/PostsCard'
 import FullPost from '../Components/FullPost'
 import ReplyCard from '../Components/ReplyCard'
@@ -26,6 +26,7 @@ const CBReplies = ({navigation, route}) => {
     
     //{justifyContent: 'flex-start'}
     return (
+		<ImageBackground source={require('../assets/com.jpg')} resizeMode="cover" style={[styles.image, {flex: 1}]}> 
         <View style={[styles.repliesContainer]}>
             <View style={{height: 15, width: 30}} />
             <Button onPress={() => {navigation.goBack()}} title='Back' color="steelblue" />
@@ -41,6 +42,7 @@ const CBReplies = ({navigation, route}) => {
             <Button onPress={() => {navigation.navigate('Create', {mode: false, post: post})}} title='Reply' color="steelblue" />
             <View style={{height: 15, width: 30}} />
         </View>
+        </ImageBackground>
     )
 }
 

@@ -40,7 +40,6 @@ const PostCard: React.FC<propType> = ({post, navigation}) => {
                         <Text style={{fontSize: 20}}> {likes}  </Text>
                     </>
                 </TouchableHighlight>
-                <Text> Comments: {post.NumReplies}</Text>
             </View>
         </View>
     )

@@ -33,7 +33,7 @@ const Login = ({ navigation }) => {
 	const [status, setStatus] = useState('');
     
 	return (
-		<ImageBackground source={require('../fear.png')} resizeMode="cover" style={styles.image}> 
+		<ImageBackground source={require('../assets/fear.png')} resizeMode="cover" style={styles.image}> 
 		<View style={[styles.container, {minHeight: 500, justifyContent: 'center'}]}> 
 			<Text style={{color: 'white', fontSize: 32, marginBottom: 20}}>Badger Break</Text>
 			{mode === '' &&

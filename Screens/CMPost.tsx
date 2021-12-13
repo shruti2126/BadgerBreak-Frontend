@@ -1,6 +1,6 @@
 import { setStatusBarTranslucent } from 'expo-status-bar'
 import React, {useEffect, useState} from 'react'
-import { TextInput, Text, View, TouchableOpacity, Button } from 'react-native'
+import { TextInput, Text, View, TouchableOpacity, Button, ImageBackground } from 'react-native'
 import getStorageData from '../Hooks/getStorageData'
 import postPost from '../Hooks/postPost'
 import postReply from '../Hooks/postReply'
@@ -36,6 +36,7 @@ const CMPost = ({navigation, route}) => {
     const [status, setStat] = useState('')
     
     return (
+		<ImageBackground source={require('../assets/com.jpg')} resizeMode="cover" style={[styles.image, {flex: 1}]}> 
         <View style={[styles.container, {justifyContent: 'flex-start'}]}>
 			<View style={{height: 15, width: 30}} />
 			<Button onPress={() => {navigation.goBack()}} title='Back' color="steelblue" />
@@ -120,6 +121,7 @@ const CMPost = ({navigation, route}) => {
 				</View>
 			}
         </View>
+		</ImageBackground>
     )
 }
 
