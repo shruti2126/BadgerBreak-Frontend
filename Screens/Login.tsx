@@ -55,7 +55,7 @@ const Login = ({ navigation }) => {
 			{mode !== '' &&
 			<>
 				<TextInput
-					onChangeText={(email : string) => setEmail(email.toLowerCase())}
+					onChangeText={(email: string) => {setEmail(email.toLowerCase())}}
 					value={email}
 					secureTextEntry={false}
 					placeholder="Email"

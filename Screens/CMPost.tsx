@@ -58,7 +58,7 @@ const CMPost = ({navigation, route}) => {
 						style={styles.textInput}
 				/>
 				<TouchableOpacity
-					style={[styles.card, {backgroundColor: 'steelblue', height: 35, margin: 15}]}
+					style={[styles.card, {backgroundColor: 'steelblue', height: 35, margin: 15, padding: 0, width: 150}]}
 					onPress={async () => {
 						// submit correct type of document to the api
 						const user = await getStorageData('user');

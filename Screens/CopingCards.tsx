@@ -79,54 +79,58 @@ export default function CopingCards() {
 		<View style={styles.container}>
 			<ScrollView>
 
-			<View style={{backgroundColor: '#DDDDDD', display: 'flex', alignItems: 'center', justifyContent: 'center', width: '90%', padding: 20, borderRadius: 10, margin: '5%'}}>
+			<View style={{backgroundColor: '#DDDDDD', display: 'flex', alignItems: 'center', justifyContent: 'center', width: 300, padding: 20, borderRadius: 10, margin: '5%'}}>
 				<Text style={{fontSize: 14}}>Add a New Coping Card</Text>
 				<TextInput
 					onChangeText={setEmotion}
 					value={emotion}
 					secureTextEntry={false}
 					placeholder="Emotion"					
-					style={{backgroundColor: 'white', height: 40, width: 150, padding: 10, marginTop: 10, marginBottom: 10, borderColor: '#000', borderWidth: 1, borderRadius: 5}}
+					style={[styles.textInput, {width: '80%'}]}
 				/>
 				<TextInput
 					onChangeText={setText}
 					value={text}
 					secureTextEntry={false}
-					placeholder="Description"
-					style={{backgroundColor: 'white', height: 40, width: 150, padding: 10, marginTop: 10, marginBottom: 10, borderColor: '#000', borderWidth: 1, borderRadius: 5}}
+					placeholder="Description"					
+					style={[styles.textInput, {width: '80%'}]}
 				/>
 				<Button
 					onPress={() => addCard({emotion: emotion, text: text})}
 					title='Add New Card'
 					color='green'
 				/>
-				{filter.length !== 0 ?
-					<Text style={{color: 'black'}}>Filter Categories</Text> : <></>
+
+			</View>
+
+			{filter.length !== 0 ?
+				<View style={{backgroundColor: '#DDDDDD', display: 'flex', alignItems: 'center', justifyContent: 'center', width: 300, padding: 20, borderRadius: 10, margin: '5%'}}>
+					<Text style={{color: 'black'}}>Filter Categories</Text> 
+					<View style={{display: 'flex', justifyContent: 'center', flexWrap: 'wrap', flexDirection: 'row', alignItems: 'center', alignContent: 'center'}}>
+						{allEmotions.map(emotion => {
+							return <Button
+								onPress={() => {
+									let newFilter = [...filter]
+									if (!newFilter.includes(emotion)) {
+										newFilter.push(emotion)
+									}
+									else {
+										newFilter = newFilter.filter((emote) => emote !== emotion)
+									}
+									setFilter(newFilter)
+								}}
+								title={emotion}
+								color={filter.includes(emotion)? 'green' : 'red'}
+							/>
+						})}
+					</View>
+				</View>	: <></>
 				}
 
-				<View style={{display: 'flex', justifyContent: 'center', flexWrap: 'wrap', flexDirection: 'row', alignItems: 'center', alignContent: 'center'}}>
-					{allEmotions.map(emotion => {
-						return <Button
-							onPress={() => {
-								let newFilter = [...filter]
-								if (!newFilter.includes(emotion)) {
-									newFilter.push(emotion)
-								}
-								else {
-									newFilter = newFilter.filter((emote) => emote !== emotion)
-								}
-								setFilter(newFilter)
-							}}
-							title={emotion}
-							color={filter.includes(emotion)? 'green' : 'red'}
-						/>
-					})}
-				</View>
-			</View>
 			<View style={{alignItems: 'center'}}>
 				{ccards.filter((ccard) => filterCards(ccard)).map((ccard, i) => {
 					return <CopingCard 
-						copingCard={ccard} 
+						ccard={ccard} 
 						key={i} 
 						editCard={(cCard: cCard) => {updateCard(i, cCard)}}
 						delCard={() => {delCard(i)}}

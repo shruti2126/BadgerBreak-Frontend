@@ -43,7 +43,7 @@ export default function Home({navigation}) {
 		<View style={[styles.container, {justifyContent: 'flex-start'}]}>
 			<ScrollView>
 				<TouchableOpacity 
-					style={styles.card}
+					style={[styles.card, {width: 300}]}
 					onPress={() => navigation.navigate('Coping Cards')}
 				>
 					<Text style={{fontSize: 12, fontWeight: 'bold'}}>Coping Cards</Text>

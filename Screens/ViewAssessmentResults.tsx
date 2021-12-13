@@ -11,7 +11,8 @@ const styles = getStyles();
 export default function ViewAssessmentResults({route, navigation}) {
 	const {quiz, scores} = route.params
 
-	const total = scores.reduce((sum:number, score:number) => sum += Math.trunc(score));
+
+	let total: number = scores.reduce((total, score) => total += score)
 
 	useEffect(() => {
 		updateQuizes();
