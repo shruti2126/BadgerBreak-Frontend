@@ -14,32 +14,35 @@ const styles = getStyles();
 
 
 const PostCard: React.FC<propType> = ({post, navigation}) => {
-    const [likes, setLikes] = useState<Number>(post.Likes)
+    const [likes, setLikes] = useState<number>(0)
     
-    // const increaseLikes = () => {
-    //     var newLikes: Number = post.Likes + 1
-    //     setLikes(newLikes)
-    // }
+    const increaseLikes = () => {
+        setLikes(likes + 1)
+    }
 
     return (
-        <TouchableOpacity 
-            onPress={() => {navigation.navigate("Replies", {post})}}
-            style={[styles.postCard, {width:'100%'}]}
+        <View
+            style={[styles.postCard, {width:'100%', padding: 20}]}
         >
-            <Text style={{alignSelf: 'flex-start', color: 'steelblue'}}>{post.Author}</Text>
+            <TouchableOpacity 
+                onPress={() => {navigation.navigate("Replies", {post})}}
+            >
             <Text style={{fontSize: 20}}>{post.Title}</Text>
-            <View style={{height: 10}}/>
+            <View style={{height: 15}}/>
+            </TouchableOpacity>
             <View style={styles.like}>
-                <TouchableHighlight style={{display: 'flex', flexDirection: 'row', justifyContent: 'center'}}>
+                <TouchableHighlight 
+                    style={{display: 'flex', flexDirection: 'row', justifyContent: 'center'}}
+                    onPress={increaseLikes}
+                >
                     <>
                         <Image style={styles.like_image} source={require('../assets/like.webp')} /> 
-                        <Text style={{fontSize: 20}}> {post.Likes}  </Text>
+                        <Text style={{fontSize: 20}}> {likes}  </Text>
                     </>
                 </TouchableHighlight>
                 <Text> Comments: {post.NumReplies}</Text>
             </View>
-        </TouchableOpacity>
-       
+        </View>
     )
 }
 

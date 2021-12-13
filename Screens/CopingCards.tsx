@@ -76,9 +76,9 @@ export default function CopingCards() {
 	allEmotions = allEmotions.filter((emotion: string, i: number) => allEmotions.indexOf(emotion) === i)
 
 	return (
-		<View style={styles.container}>
+		<View style={[styles.container, {backgroundColor: '#1f2f3f'}]}>
 			<ScrollView>
-
+			<View style={{width: 350, display: 'flex', alignItems: 'center'}}>
 			<View style={{backgroundColor: '#DDDDDD', display: 'flex', alignItems: 'center', justifyContent: 'center', width: 300, padding: 20, borderRadius: 10, margin: '5%'}}>
 				<Text style={{fontSize: 14}}>Add a New Coping Card</Text>
 				<TextInput
@@ -136,6 +136,7 @@ export default function CopingCards() {
 						delCard={() => {delCard(i)}}
 					/>
 				})}
+			</View>
 			</View>
 			</ScrollView>
 		</View>
