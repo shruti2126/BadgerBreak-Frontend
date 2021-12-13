@@ -10,6 +10,7 @@ type Quiz = {
 	minPerQuestion: number,
 	maxPerQuestion: number,
 	answerLegend: string[],
+	scoreKey: string[]
 }
 
 class ScoreManager {
