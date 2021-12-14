@@ -39,33 +39,41 @@ export default function Home({navigation}) {
 	const styles = getStyling();
 
 	return (
-		<ImageBackground source={require('../fear.png')} resizeMode="cover" style={styles.image}> 
+		<ImageBackground source={require('../assets/fear.png')} resizeMode="cover" style={styles.image}> 
 		<View style={[styles.container, {justifyContent: 'flex-start'}]}>
 			<ScrollView>
 				<TouchableOpacity 
 					style={[styles.card, {width: 300}]}
 					onPress={() => navigation.navigate('Coping Cards')}
 				>
-					<Text style={{fontSize: 12, fontWeight: 'bold'}}>Coping Cards</Text>
-					<Text style={{fontSize: 12}}>You have {cCards.length} Coping Cards</Text>
+					<Text style={{fontSize: 16, fontWeight: 'bold'}}>Coping Cards</Text>
+					<Text style={{fontSize: 14}}>You have {cCards.length} Coping Cards</Text>
 				</TouchableOpacity>
 
 				<TouchableOpacity 
 					style={styles.card}
 					onPress={() => setShowAssessments(!showAssessments)}
 				>
-					<Text style={{fontSize: 12, fontWeight: 'bold'}}>Your Assessments</Text>
-					<Text style={{fontSize: 12}}>You have taken {quizes.length} Assessment(s)</Text>
-					<Text style={{fontSize: 12}}>Press Here to show/hide</Text>
+					<Text style={{fontSize: 16, fontWeight: 'bold'}}>Your Assessments</Text>
+					<Text style={{fontSize: 14}}>You have taken {quizes.length} Assessment(s)</Text>
+					<Text style={{fontSize: 14}}>Press Here to show/hide</Text>
 					{showAssessments &&
 						<>
 							{quizes.map((quiz: quizScoreType) => {
 								return (<View style={{borderColor: '#000', borderWidth: 1, padding: 10, margin: 10}}>
-									<Text style={{fontSize: 12}}>{quiz.title}: {quiz.score}</Text>
+									<Text style={{fontSize: 14}}>{quiz.title}: {quiz.score}</Text>
 								</View>)
 							})}
 						</>
 					}
+				</TouchableOpacity>
+
+				<TouchableOpacity 
+					style={[styles.card, {width: 300}]}
+					onPress={() => navigation.navigate('Posts')}
+				>
+					<Text style={{fontSize: 16, fontWeight: 'bold'}}>Community Board</Text>
+					<Text style={{fontSize: 14}}>Come hang with our community!</Text>
 				</TouchableOpacity>
 
 				<TouchableOpacity 
@@ -75,7 +83,7 @@ export default function Home({navigation}) {
 						navigation.goBack();
 					}}
 				>
-					<Text style={{fontSize: 16, color: 'white'}}>Sign Out</Text>
+					<Text style={{fontSize: 14, color: 'white'}}>Sign Out</Text>
 				</TouchableOpacity>
 
 				<TouchableOpacity 
@@ -87,7 +95,7 @@ export default function Home({navigation}) {
 						await loadData();
 					}}
 				>
-					<Text style={{fontSize: 16, color: 'white'}}>Delete Your Local Data</Text>
+					<Text style={{fontSize: 14, color: 'white'}}>Delete Your Local Data</Text>
 				</TouchableOpacity>
 				
 			</ScrollView>

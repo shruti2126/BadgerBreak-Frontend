@@ -28,7 +28,7 @@ const QuizCard : React.FC<propType> = ({navigation, quiz}) => {
 	return (
 		<TouchableOpacity
 			onPress={() => {navigation.navigate('TakeAssessment', { quiz: quiz })}}
-			style={styles.card}
+			style={[styles.card, {width: '80%'}]}
 		>
 			<Text style={{fontSize: 14, fontWeight: 'bold'}}>{quiz.title}</Text>
 			<Text>{quiz.description}</Text>

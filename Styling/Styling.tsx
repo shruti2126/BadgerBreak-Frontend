@@ -17,9 +17,12 @@ export default function getStyling() {
             justifyContent: 'flex-start'
         },
         repliesContainer: {
-            backgroundColor: '#1f2f3f',
+            backgroundColor: 'rgba( 0, 0, 0, 0.7)',
+            // backgroundColor: '#1f2f3f',
             alignItems: 'center',
-            flex: 1
+            flex: 1,
+            flexDirection: "column",
+            justifyContent: 'flex-start'
         },
         h1: {
             color: 'white',
@@ -51,8 +54,12 @@ export default function getStyling() {
             borderColor: 'skyblue'
         },
         post_container: {
-            backgroundColor: '#1f2f3f',
-            alignItems: 'center'
+            backgroundColor: 'rgba( 0, 0, 0, 0.7)',
+            //backgroundColor: '#1f2f3f',
+            alignItems: 'center',
+            flex: 1,
+            flexDirection: "column",
+            justifyContent: 'flex-start',
         },
         like : {
             flex: 1,

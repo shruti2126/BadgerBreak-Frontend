@@ -1,5 +1,5 @@
 import React, {useState, useEffect} from 'react'
-import {View, Text, TextInput, Button} from 'react-native'
+import {View, Text, TextInput, Button, ImageBackground} from 'react-native'
 import { ScrollView } from 'react-native-gesture-handler'
 import getStorageData from '../Hooks/getStorageData'
 import CopingCard from '../Components/CopingCard'
@@ -76,7 +76,8 @@ export default function CopingCards() {
 	allEmotions = allEmotions.filter((emotion: string, i: number) => allEmotions.indexOf(emotion) === i)
 
 	return (
-		<View style={[styles.container, {backgroundColor: '#1f2f3f'}]}>
+		<ImageBackground source={require('../assets/psych2.png')} resizeMode="cover" style={styles.image}> 
+		<View style={styles.container}>
 			<ScrollView>
 			<View style={{width: 350, display: 'flex', alignItems: 'center'}}>
 			<View style={{backgroundColor: '#DDDDDD', display: 'flex', alignItems: 'center', justifyContent: 'center', width: 300, padding: 20, borderRadius: 10, margin: '5%'}}>
@@ -140,5 +141,6 @@ export default function CopingCards() {
 			</View>
 			</ScrollView>
 		</View>
+		</ImageBackground>
 	)
 }

@@ -31,7 +31,7 @@ const PostCard: React.FC<propType> = ({post, navigation}) => {
             <View style={{height: 15}}/>
             </TouchableOpacity>
             <View style={styles.like}>
-                <TouchableHighlight 
+                <TouchableOpacity 
                     style={{display: 'flex', flexDirection: 'row', justifyContent: 'center'}}
                     onPress={increaseLikes}
                 >
@@ -39,8 +39,7 @@ const PostCard: React.FC<propType> = ({post, navigation}) => {
                         <Image style={styles.like_image} source={require('../assets/like.webp')} /> 
                         <Text style={{fontSize: 20}}> {likes}  </Text>
                     </>
-                </TouchableHighlight>
-                <Text> Comments: {post.NumReplies}</Text>
+                </TouchableOpacity>
             </View>
         </View>
     )

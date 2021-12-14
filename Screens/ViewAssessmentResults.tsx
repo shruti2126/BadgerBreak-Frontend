@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react'
-import {TouchableOpacity, View, Text} from 'react-native'
+import {TouchableOpacity, View, Text, ImageBackground} from 'react-native'
 import getStorageData from '../Hooks/getStorageData';
 import setStorageData from '../Hooks/setStorageData';
 import getStyles from '../Styling/Styling';
@@ -47,6 +47,7 @@ export default function ViewAssessmentResults({route, navigation}) {
 
 
 	return (
+		<ImageBackground source={require('../assets/field.jpg')} resizeMode="cover" style={[styles.image, {flex: 1}]}> 
 		<View style={[styles.container, {justifyContent: 'flex-start'}]}>
 			<Text style={styles.card}>Your Score for {quiz.title} was {total}!</Text>
 			<Text style={styles.card}>You have {scoreResponse}</Text>
@@ -57,5 +58,6 @@ export default function ViewAssessmentResults({route, navigation}) {
 				<Text style={{fontSize: 16, color: 'white'}}>Take Another Assessment</Text>
 			</TouchableOpacity>
 		</View>
+		</ImageBackground>
 	)
 }
