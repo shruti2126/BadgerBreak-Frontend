@@ -11,7 +11,7 @@ type propType = {
 }
 
 const ReplyCard: React.FC<propType> = ({reply}) => {
-    const [likes, setLikes] = useState<number>(0);
+    const [likes, setLikes] = useState<number>(parseInt(reply.Likes.toString()));
     
     return (
         <View style={[styles.postCard, {justifyContent: 'flex-end', width: '75%'}]}>
@@ -22,7 +22,7 @@ const ReplyCard: React.FC<propType> = ({reply}) => {
             >
                 <>
                     <Image style={styles.like_image} source={require('../assets/like.webp')} /> 
-                    <Text style={{fontSize: 20}}> {likes}  </Text>
+                    <Text style={{fontSize: 20}}> {likes} </Text>
                 </>
             </TouchableOpacity>
         </View>

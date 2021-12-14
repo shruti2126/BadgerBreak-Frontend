@@ -14,7 +14,7 @@ const styles = getStyles();
 
 
 const PostCard: React.FC<propType> = ({post, navigation}) => {
-    const [likes, setLikes] = useState<number>(0)
+    const [likes, setLikes] = useState<number>(parseInt(post.Likes.toString()))
     
     const increaseLikes = () => {
         setLikes(likes + 1)
