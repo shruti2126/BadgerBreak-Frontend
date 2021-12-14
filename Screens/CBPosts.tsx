@@ -25,6 +25,7 @@ const CBPosts = ({navigation, route}) => {
     }, [])
 
     const loadPosts = async () => {
+        setPosts([]);
         const psts = await getPosts();
         setPosts(psts.reverse());
     }

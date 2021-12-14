@@ -10,7 +10,7 @@ type propType = {
 }
 
 const FullPost: React.FC<propType> = ({post}) => {
-    const [likes, setLikes] = useState<number>(0)
+    const [likes, setLikes] = useState<number>(parseInt(post.Likes.toString()))
     
     const increaseLikes = () => {
         setLikes(likes + 1)
