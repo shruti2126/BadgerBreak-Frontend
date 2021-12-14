@@ -14,7 +14,7 @@ const ReplyCard: React.FC<propType> = ({reply}) => {
     const [likes, setLikes] = useState<number>(0);
     
     return (
-        <View style={[styles.postCard, {justifyContent: 'flex-end', width: '65%'}]}>
+        <View style={[styles.postCard, {justifyContent: 'flex-end', width: '75%'}]}>
             <Text>{reply.Text}</Text>
             <TouchableOpacity 
                     style={{display: 'flex', flexDirection: 'row', justifyContent: 'center', width: 50}}
