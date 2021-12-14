@@ -49,7 +49,7 @@ export default function ViewAssessmentResults({route, navigation}) {
 	return (
 		<View style={[styles.container, {justifyContent: 'flex-start'}]}>
 			<Text style={styles.card}>Your Score for {quiz.title} was {total}!</Text>
-			<Text style={styles.card}>{scoreResponse}</Text>
+			<Text style={styles.card}>You have {scoreResponse}</Text>
 			<TouchableOpacity 
 				style={[styles.card, {backgroundColor: 'steelblue'}]}
 				onPress={() => navigation.popToTop()}
