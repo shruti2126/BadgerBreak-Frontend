@@ -4,7 +4,7 @@ import getStorageData from '../Hooks/getStorageData';
 import setStorageData from '../Hooks/setStorageData';
 import getStyles from '../Styling/Styling';
 
-type quizScoreType = {title: string, score: number}
+type quizScoreType = {title: string, score: number, result:string}
 
 const styles = getStyles();
 
