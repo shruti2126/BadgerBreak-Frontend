@@ -61,11 +61,7 @@ const PostCard: React.FC<propType> = ({post, navigation, refresh}) => {
                 {(post.Author === user || post.Author === 'admin@admin.com')?
                     <TouchableOpacity 
                         style={[styles.loginCard, {backgroundColor: 'red', height: 40, minWidth: '50%', margin: 15, marginLeft: 100}]}
-<<<<<<< HEAD
                         onPress={() => {deletePost(post); refresh()}}
-=======
-                        onPress={async () => {await deletePost(post); refresh()}}
->>>>>>> 3b30e1a0a316f0d664384209e35bc2ecfd3bfe3e
                     >
                         <Text style={{fontSize: 16, color: 'white'}}> Delete This Post </Text>
                     </TouchableOpacity>
