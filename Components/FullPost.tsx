@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { StyleSheet, Text, View, TouchableOpacity, Image } from 'react-native'
+import deletePost from '../Hooks/deletePost';
 import getStorageData from '../Hooks/getStorageData';
 import updatePost from '../Hooks/updatePost';
 import { Post } from '../Interfaces/Interfaces'
@@ -51,8 +52,8 @@ const FullPost: React.FC<propType> = ({post, refresh}) => {
                 </View>
                 {(post.Author === user || post.Author === 'admin@admin.com')?
                     <TouchableOpacity 
-                        style={[styles.loginCard, {backgroundColor: 'red', height: 40, minWidth: '50%', width: 150, margin: 15, marginLeft: 100}]}
-                        onPress={() => {/*deletePost(post._id))*/; refresh(); }}
+                        style={[styles.loginCard, {backgroundColor: 'red', height: 40, minWidth: '50%', width: 150, margin: 15, marginLeft: 150}]}
+                        onPress={() => {deletePost(post); refresh()}}
                     >
                         <Text style={{fontSize: 16, color: 'white'}}> Delete This Post </Text>
                     </TouchableOpacity>

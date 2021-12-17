@@ -5,6 +5,7 @@ import {Post} from '../Interfaces/Interfaces'
 import { TouchableHighlight } from 'react-native-gesture-handler'
 import updatePost from '../Hooks/updatePost'
 import getStorageData from '../Hooks/getStorageData'
+import deletePost from '../Hooks/deletePost'
 
 type propType = {
     post: Post,
@@ -60,7 +61,7 @@ const PostCard: React.FC<propType> = ({post, navigation, refresh}) => {
                 {(post.Author === user || post.Author === 'admin@admin.com')?
                     <TouchableOpacity 
                         style={[styles.loginCard, {backgroundColor: 'red', height: 40, minWidth: '50%', margin: 15, marginLeft: 100}]}
-                        onPress={() => {/*deletePost(post._id))*/; refresh()}}
+                        onPress={() => {deletePost(post); refresh()}}
                     >
                         <Text style={{fontSize: 16, color: 'white'}}> Delete This Post </Text>
                     </TouchableOpacity>
