@@ -3,9 +3,8 @@ import { Replies } from '../Interfaces/Interfaces';
 import url from './getUrl'
 
 const updateReply = async (reply: Replies) => {
-	console.log("sending reply = ", reply)
 	await fetch(url + '/updateReplyLikes', {
-		method: 'POST',
+		method: 'PUT',
 		headers: {
 			reply: JSON.stringify(reply)
 		}

@@ -4,7 +4,7 @@ import url from './getUrl'
 
 const updatePost = async (post: Post) => {
 	await fetch(url + '/updatePostLikes', {
-		method: 'POST',
+		method: 'PUT',
 		headers: {
 			post: JSON.stringify(post)
 		}
