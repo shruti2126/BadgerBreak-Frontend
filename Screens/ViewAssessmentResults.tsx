@@ -4,7 +4,7 @@ import getStorageData from '../Hooks/getStorageData';
 import setStorageData from '../Hooks/setStorageData';
 import getStyles from '../Styling/Styling';
 
-type quizScoreType = {title: string, score: number}
+type quizScoreType = {title: string, score: number, result:string}
 
 const styles = getStyles();
 
@@ -50,7 +50,7 @@ export default function ViewAssessmentResults({route, navigation}) {
 		<ImageBackground source={require('../assets/field.jpg')} resizeMode="cover" style={[styles.image, {flex: 1}]}> 
 		<View style={[styles.container, {justifyContent: 'flex-start'}]}>
 			<Text style={styles.card}>Your Score for {quiz.title} was {total}!</Text>
-			<Text style={styles.card}>You have {scoreResponse}</Text>
+			<Text style={styles.card}>Result:{scoreResponse}</Text>
 			<TouchableOpacity 
 				style={[styles.card, {backgroundColor: 'steelblue'}]}
 				onPress={() => navigation.popToTop()}
