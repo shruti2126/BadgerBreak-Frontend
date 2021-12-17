@@ -36,7 +36,7 @@ const ReplyCard: React.FC<propType> = ({reply, refresh}) => {
     }
     
     return (
-        <View style={[styles.postCard, {justifyContent: 'flex-end', width: 225}]}>
+        <View style={[styles.postCard, {justifyContent: 'flex-end', width: 275, marginLeft: 65}]}>
             <Text>{reply.Text}</Text>
             <View style={{display: 'flex', flexDirection: 'row', alignItems: 'center'}}>
                 <TouchableOpacity 
@@ -50,7 +50,7 @@ const ReplyCard: React.FC<propType> = ({reply, refresh}) => {
                 </TouchableOpacity>
                 {(reply.Author === user || reply.Author === 'admin@admin.com')?
                     <TouchableOpacity 
-                        style={[styles.card, {backgroundColor: 'red', height: 25, width: 130, padding: 5, paddingTop: 10, paddingBottom: 10}]}
+                        style={[styles.loginCard, {backgroundColor: 'red', height: 40, minWidth: '50%', margin: 15, marginLeft: 75}]}
                         onPress={() => {/*deletePost(post._id))*/; refresh() }}
                     >
                         <Text style={{fontSize: 12, color: 'white'}}> Delete This Reply </Text>
