@@ -20,6 +20,7 @@ const CBReplies = ({navigation, route}) => {
     }, [])
 
     const loadReplies = async () => {
+        setReplies([])
         const repls = await getReplies(post._id);
         setReplies(repls);
     }
@@ -30,11 +31,11 @@ const CBReplies = ({navigation, route}) => {
         <View style={[styles.repliesContainer]}>
             <View style={{height: 15, width: 30}} />
             <Button onPress={() => {navigation.goBack()}} title='Back' color="steelblue" />
-            <FullPost post={post} />
+            <FullPost post={post} refresh={() => {navigation.goBack()}} />
             <ScrollView>
                 {
                     replies.map((reply, i) => {
-                        return <ReplyCard reply={reply} author={post.author} key={i}/>
+                        return <ReplyCard reply={reply} refresh={loadReplies} key={i}/>
                     })
                 }
             </ScrollView>

@@ -90,6 +90,7 @@ const CMPost = ({navigation, route}) => {
 							}
 							catch (err) {
 								setStat(err.message);
+								return;
 							}
 						}
 						else { 
@@ -107,8 +108,10 @@ const CMPost = ({navigation, route}) => {
 							}
 							catch (err) {
 								setStat(err.message);
+								return;
 							}
 						}
+						navigation.goBack();
 					}}
 				>
 					<Text style={{fontSize: 16, color: 'white'}}>Submit {(mode)? "Post" : "Reply"}</Text>

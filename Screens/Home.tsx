@@ -51,7 +51,7 @@ export default function Home({navigation}) {
 				</TouchableOpacity>
 
 				<TouchableOpacity 
-					style={styles.card}
+					style={[styles.card, {width: 300}]}
 					onPress={() => setShowAssessments(!showAssessments)}
 				>
 					<Text style={{fontSize: 16, fontWeight: 'bold'}}>Your Assessments</Text>
@@ -60,7 +60,7 @@ export default function Home({navigation}) {
 					{showAssessments &&
 						<>
 							{quizes.map((quiz: quizScoreType) => {
-								return (<View style={{borderColor: '#000', borderWidth: 1, padding: 10, margin: 10}}>
+								return (<View style={{borderColor: '#000', borderWidth: 1, padding: 10, margin: 10, width: '80%'}}>
 									<Text style={{fontSize: 14}}>{quiz.title}: {quiz.score}</Text>
 								</View>)
 							})}

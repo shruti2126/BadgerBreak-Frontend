@@ -22,5 +22,5 @@ export interface Replies {
     Author: String, 
     PostId: Number,
     Date: String, 
-    Likes: Number,
+    Likes: number,
 }

@@ -26,31 +26,33 @@ export default function ViewAssessmentResults({route, navigation}) {
 		var newQuizScores = [...quizes];
 		const i = newQuizScores.findIndex((score: quizScoreType) => score.title === quiz.title)
 		if (i === -1) {
-			newQuizScores.push({title: quiz.title, score: total})
+			newQuizScores.push({title: quiz.title, score: '' + total + ': ' + getScoreMessage()})
 		}
 		else {
-			newQuizScores[i].score = total;
+			newQuizScores[i].score = '' + total + ': ' + getScoreMessage();
 		}
 		await setStorageData(user.email + ':quizes', newQuizScores);
 	}
+	const getScoreMessage = () => {
+		let scoreResponse = ''
+		let reachedEnd = false
 
-	let scoreResponse = ''
-	let reachedEnd = false
-
-	quiz.scoreKey.forEach(scorekey => {
-		scorekey = scorekey.split(':')
-		if (total <= parseInt(scorekey[0]) && !reachedEnd) {
-			scoreResponse = scorekey[1];
-			reachedEnd = true;
-		}
-	})
+		quiz.scoreKey.forEach(scorekey => {
+			scorekey = scorekey.split(':')
+			if (total <= parseInt(scorekey[0]) && !reachedEnd) {
+				scoreResponse = scorekey[1];
+				reachedEnd = true;
+			}
+		})
+		return scoreResponse
+	}
 
 
 	return (
 		<ImageBackground source={require('../assets/field.jpg')} resizeMode="cover" style={[styles.image, {flex: 1}]}> 
 		<View style={[styles.container, {justifyContent: 'flex-start'}]}>
 			<Text style={styles.card}>Your Score for {quiz.title} was {total}!</Text>
-			<Text style={styles.card}>Result:{scoreResponse}</Text>
+			<Text style={styles.card}>{getScoreMessage()}</Text>
 			<TouchableOpacity 
 				style={[styles.card, {backgroundColor: 'steelblue'}]}
 				onPress={() => navigation.popToTop()}

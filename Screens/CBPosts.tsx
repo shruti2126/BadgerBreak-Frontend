@@ -38,7 +38,7 @@ const CBPosts = ({navigation, route}) => {
                 <ScrollView >
                     { 
                         posts.map((post, i)=>{
-                            return <PostCard post={post} navigation={navigation} key={i}/>
+                            return <PostCard post={post} navigation={navigation} key={i} refresh={loadPosts}/>
                         })
                     }
                 </ScrollView>
