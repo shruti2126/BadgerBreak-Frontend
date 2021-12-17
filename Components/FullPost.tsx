@@ -13,7 +13,7 @@ type propType = {
 }
 
 const FullPost: React.FC<propType> = ({post, refresh}) => {
-    const [likes, setLikes] = useState<number>(parseInt(post.Likes.toString()))
+    const [likes, setLikes] = useState<number>(post.Likes)
     const [user, setUser] = useState<string>('')
     
     useEffect(() => {
@@ -51,7 +51,7 @@ const FullPost: React.FC<propType> = ({post, refresh}) => {
                 </View>
                 {(post.Author === user || post.Author === 'admin@admin.com')?
                     <TouchableOpacity 
-                        style={[styles.loginCard, {backgroundColor: 'red', height: 40, minWidth: '50%', margin: 15, marginLeft: 100}]}
+                        style={[styles.loginCard, {backgroundColor: 'red', height: 40, minWidth: '50%', width: 150, margin: 15, marginLeft: 100}]}
                         onPress={() => {/*deletePost(post._id))*/; refresh(); }}
                     >
                         <Text style={{fontSize: 16, color: 'white'}}> Delete This Post </Text>

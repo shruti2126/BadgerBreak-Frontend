@@ -13,7 +13,7 @@ type propType = {
 }
 
 const ReplyCard: React.FC<propType> = ({reply, refresh}) => {
-    const [likes, setLikes] = useState<number>(parseInt(reply.Likes.toString()));
+    const [likes, setLikes] = useState<number>(reply.Likes);
     const [user, setUser] = useState<string>('')
     
     useEffect(() => {
@@ -30,7 +30,7 @@ const ReplyCard: React.FC<propType> = ({reply, refresh}) => {
         updateLikes(likes + 1)
     }
     
-    const updateLikes = (likes: number | Number) => {
+    const updateLikes = (likes: number) => {
         reply.Likes = likes
         updateReply(reply)
     }

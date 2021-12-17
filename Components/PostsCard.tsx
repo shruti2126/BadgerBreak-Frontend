@@ -15,7 +15,7 @@ type propType = {
 const styles = getStyles();
 
 const PostCard: React.FC<propType> = ({post, navigation, refresh}) => {
-    const [likes, setLikes] = useState<number>(parseInt(post.Likes.toString()))
+    const [likes, setLikes] = useState<number>(post.Likes)
     const [user, setUser] = useState<string>('')
 
     useEffect(() => {
