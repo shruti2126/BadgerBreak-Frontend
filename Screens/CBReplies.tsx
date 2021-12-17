@@ -20,6 +20,7 @@ const CBReplies = ({navigation, route}) => {
     }, [])
 
     const loadReplies = async () => {
+        setReplies([])
         const repls = await getReplies(post._id);
         setReplies(repls);
     }
