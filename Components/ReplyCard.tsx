@@ -4,6 +4,7 @@ import getStyles from '../Styling/Styling'
 import { Post, Replies } from "../Interfaces/Interfaces";
 import updateReply from '../Hooks/updateReply';
 import getStorageData from '../Hooks/getStorageData';
+import deleteReply from '../Hooks/deleteReply';
 
 const styles = getStyles();
 
@@ -51,7 +52,7 @@ const ReplyCard: React.FC<propType> = ({reply, refresh}) => {
                 {(reply.Author === user || reply.Author === 'admin@admin.com')?
                     <TouchableOpacity 
                         style={[styles.loginCard, {backgroundColor: 'red', height: 40, minWidth: '50%', margin: 15, marginLeft: 75}]}
-                        onPress={() => {/*deletePost(post._id))*/; refresh() }}
+                        onPress={async () => {await deleteReply(reply); refresh()}}
                     >
                         <Text style={{fontSize: 12, color: 'white'}}> Delete This Reply </Text>
                     </TouchableOpacity>
