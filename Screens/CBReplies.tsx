@@ -33,11 +33,13 @@ const CBReplies = ({navigation, route}) => {
             <Button onPress={() => {navigation.goBack()}} title='Back' color="steelblue" />
             <FullPost post={post} refresh={() => {navigation.goBack()}} />
             <ScrollView>
-                {
-                    replies.map((reply, i) => {
-                        return <ReplyCard reply={reply} refresh={loadReplies} key={i}/>
-                    })
-                }
+                <View style={{display: 'flex', alignItems: 'flex-end'}}>
+                    {
+                        replies.map((reply, i) => {
+                            return <ReplyCard reply={reply} refresh={loadReplies} key={i}/>
+                        })
+                    }
+                </View>
             </ScrollView>
             <View style={{height: 20, width: 30}} />
             <Button onPress={() => {navigation.navigate('Create', {mode: false, post: post})}} title='Reply' color="steelblue" />

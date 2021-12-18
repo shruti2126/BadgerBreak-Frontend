@@ -64,13 +64,13 @@ const CMPost = ({navigation, route}) => {
 						// submit correct type of document to the api
 						const user = await getStorageData('user');
 
-						if (mode && Title.length < 12) {
-							setStat("Your Title must be at least 12 characters!");
+						if (mode && Title.length < 8) {
+							setStat("Your Title must be at least 8 characters!");
 							return;
 						}
 
-						if (Txt.length < 24) {
-							setStat("Your Post must be at least 24 characters!");
+						if (Txt.length < 5) {
+							setStat("Your Post must be at least 5 characters!");
 							return;
 						}
 
@@ -85,8 +85,8 @@ const CMPost = ({navigation, route}) => {
 							}
 							// send it off to the api
 							try { 
-								await postPost(newPost);
-								navigation.goBack();
+								postPost(newPost);
+								navigation.navigate('Posts');
 							}
 							catch (err) {
 								setStat(err.message);
@@ -104,14 +104,13 @@ const CMPost = ({navigation, route}) => {
 							// send it off to the api
 							try { 
 								await postReply(reply);	
-								navigation.goBack();						
+								navigation.goBack();					
 							}
 							catch (err) {
 								setStat(err.message);
 								return;
 							}
 						}
-						navigation.goBack();
 					}}
 				>
 					<Text style={{fontSize: 16, color: 'white'}}>Submit {(mode)? "Post" : "Reply"}</Text>

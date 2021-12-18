@@ -72,6 +72,10 @@ export default function getStyling() {
             flex: 1,
             flexDirection: 'row'
         },
+        redBorder: {
+            borderWidth: 2,
+            borderColor: '#8f0000'
+        },
         loginCard: {
             backgroundColor: 'white',
             margin: 20,

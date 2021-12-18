@@ -60,10 +60,10 @@ const PostCard: React.FC<propType> = ({post, navigation, refresh}) => {
                 </TouchableOpacity>
                 {(post.Author === user || post.Author === 'admin@admin.com')?
                     <TouchableOpacity 
-                        style={[styles.loginCard, {backgroundColor: 'red', height: 40, minWidth: '50%', margin: 15, marginLeft: 100}]}
+                        style={[styles.loginCard, styles.redBorder, {borderWidth: 2, borderColor: '#8f0000', backgroundColor: 'white', height: 40, minWidth: '50%', margin: 15, marginLeft: 100}]}
                         onPress={() => {deletePost(post); refresh()}}
                     >
-                        <Text style={{fontSize: 16, color: 'white'}}> Delete This Post </Text>
+                        <Text style={{fontSize: 16, color: '#8f0000', textDecorationLine: 'underline', margin: 0}}>Delete</Text>
                     </TouchableOpacity>
                     : <></>
                 }

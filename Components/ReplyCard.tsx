@@ -51,10 +51,10 @@ const ReplyCard: React.FC<propType> = ({reply, refresh}) => {
                 </TouchableOpacity>
                 {(reply.Author === user || reply.Author === 'admin@admin.com')?
                     <TouchableOpacity 
-                        style={[styles.loginCard, {backgroundColor: 'red', height: 40, minWidth: '50%', margin: 15, marginLeft: 75}]}
+                        style={[styles.loginCard, styles.redBorder, {backgroundColor: '#white', height: 40, minWidth: '50%', margin: 15, marginLeft: 75}]}
                         onPress={() => {deleteReply(reply); refresh() }}
                     >
-                        <Text style={{fontSize: 12, color: 'white'}}> Delete This Reply </Text>
+                        <Text style={{fontSize: 16, color: '#8f0000', textDecorationLine: 'underline', margin: 0}}>Delete</Text>
                     </TouchableOpacity>
                     : <></>
                 }

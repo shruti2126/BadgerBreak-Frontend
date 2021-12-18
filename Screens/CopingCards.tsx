@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from 'react'
 import {View, Text, TextInput, Button, ImageBackground} from 'react-native'
-import { ScrollView } from 'react-native-gesture-handler'
+import { ScrollView, TouchableOpacity } from 'react-native-gesture-handler'
 import getStorageData from '../Hooks/getStorageData'
 import CopingCard from '../Components/CopingCard'
 import getStyling from '../Styling/Styling'
@@ -96,11 +96,12 @@ export default function CopingCards() {
 					placeholder="Description"					
 					style={[styles.textInput, {width: '80%'}]}
 				/>
-				<Button
+				<TouchableOpacity
+					style={[styles.loginCard, {backgroundColor: 'green', minHeight: 35, marginBottom: 0}]}
 					onPress={() => addCard({emotion: emotion, text: text})}
-					title='Add New Card'
-					color='green'
-				/>
+				>
+					<Text style={{color:'white', fontSize: 16}}>Add New Card</Text>
+				</TouchableOpacity>
 
 			</View>
 
@@ -109,20 +110,23 @@ export default function CopingCards() {
 					<Text style={{color: 'black'}}>Filter Categories</Text> 
 					<View style={{display: 'flex', justifyContent: 'center', flexWrap: 'wrap', flexDirection: 'row', alignItems: 'center', alignContent: 'center'}}>
 						{allEmotions.map(emotion => {
-							return <Button
-								onPress={() => {
-									let newFilter = [...filter]
-									if (!newFilter.includes(emotion)) {
-										newFilter.push(emotion)
-									}
-									else {
-										newFilter = newFilter.filter((emote) => emote !== emotion)
-									}
-									setFilter(newFilter)
-								}}
-								title={emotion}
-								color={filter.includes(emotion)? 'green' : 'red'}
-							/>
+							return (
+								<TouchableOpacity
+									style={[styles.loginCard, {backgroundColor: filter.includes(emotion)? 'green' : '#8f0000', minHeight: 35, margin: 10}]}
+									onPress={() => {
+										let newFilter = [...filter]
+										if (!newFilter.includes(emotion)) {
+											newFilter.push(emotion)
+										}
+										else {
+											newFilter = newFilter.filter((emote) => emote !== emotion)
+										}
+										setFilter(newFilter)
+									}}
+								>
+									<Text style={{color:'white', fontSize: 16}}>{emotion}</Text>
+								</TouchableOpacity>
+							)
 						})}
 					</View>
 				</View>	: <></>

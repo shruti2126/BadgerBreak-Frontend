@@ -52,10 +52,10 @@ const FullPost: React.FC<propType> = ({post, refresh}) => {
                 </View>
                 {(post.Author === user || post.Author === 'admin@admin.com')?
                     <TouchableOpacity 
-                        style={[styles.loginCard, {backgroundColor: 'red', height: 40, minWidth: '50%', width: 150, margin: 15, marginLeft: 150}]}
+                        style={[styles.loginCard, styles.redBorder, {backgroundColor: 'white', height: 40, minWidth: 150, width: 150, margin: 15, marginLeft: 100}]}
                         onPress={() => {deletePost(post); refresh()}}
                     >
-                        <Text style={{fontSize: 16, color: 'white'}}> Delete This Post </Text>
+                        <Text style={{fontSize: 16, color: '#8f0000', textDecorationLine: 'underline', margin: 0}}>Delete</Text>
                     </TouchableOpacity>
                     : <></>
                 }
