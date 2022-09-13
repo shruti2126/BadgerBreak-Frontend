@@ -2,10 +2,10 @@
 
 # About
 BadgerBreak is intended to be a cross-platform mobile application that is a free, self-guided Mental Health resource for UW-madison students. 
-A simple tool to allow students who are apprehensive towards the idea of help to get a head start in understanding their mental and emotional health. 
-Tap into an emotion rather than provide a disorder diagnosis
-Help students more accurately pinpoint the root of their behaviours 
-The community board will help students feel supported in their journey.
+- A simple tool to allow students who are apprehensive towards the idea of help to get a head start in understanding their mental and emotional health. 
+- Tap into an emotion rather than provide a disorder diagnosis.
+- Help students more accurately pinpoint the root of their behaviours.
+- The community board will help students feel supported in their journey.
 
 # Features
 
