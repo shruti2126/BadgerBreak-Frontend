@@ -1,5 +1,15 @@
 # badgermentalhealth
 
+# About
+BadgerBreak is intended to be a cross-platform mobile application that is a free, self-guided Mental Health resource for UW-madison students. 
+
+# Features
+
+- Coping Cards - Cards that are saved onto the user's device for privacy purposes; Enable user to make notes of thoughts, helpful messages, emotions and save them so they could return to them when they need help dealing with a certain emotion.
+- Community Board - A board for posting, liking and possibly sharing other posts created under an alias name.
+- Assessment - Short quizzes (saved onto the user's device to protect private health information) to assess the emotional state of the user and understand their thought patterns. This will allow us
+to identify issues like self-esteem, abandonment, relationship, self-acceptance, dealing with grief etc.
+
 # To run the project:
 
 1. Clone this repository and the backend repository (https://github.com/Ryan-Gillespie/bmhbackend)
