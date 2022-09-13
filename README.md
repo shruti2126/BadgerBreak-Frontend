@@ -6,8 +6,6 @@ A simple tool to allow students who are apprehensive towards the idea of help to
 Tap into an emotion rather than provide a disorder diagnosis
 Help students more accurately pinpoint the root of their behaviours 
 The community board will help students feel supported in their journey.
-![image](https://user-images.githubusercontent.com/60984268/189781028-90cab8ec-5dac-406b-b468-82f3ef636577.png)
-
 
 # Features
 
