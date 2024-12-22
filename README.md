@@ -1,4 +1,3 @@
-# badgermentalhealth
 
 # About
 BadgerBreak is intended to be a cross-platform mobile application that is a free, self-guided Mental Health resource for UW-madison students. 
